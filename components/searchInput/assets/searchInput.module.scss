@@ -1,14 +1,28 @@
 .container {
-    width:100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   .card {
-    // background: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    background-color: red;
+    background: #ffffff;
     box-shadow: 0px 0px 48px rgba(141, 151, 158, 0.1);
     border-radius: 8px;
     width: 1110px;
     height: 101px;
+    .searchInput {
+      input {
+        background: #ffffff;
+        border: 1px solid #eff0f5;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin: 10px;
+        outline: none;
+        width:353px;
+        height:38px
+      }
+    }
+    .cardSearch {
+      width: 13%;
+      background-color: red;
+    }
   }
 }
