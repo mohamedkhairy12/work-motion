@@ -1,20 +1,69 @@
-.container {
+.cont {
   width: 100%;
+  margin-top: -11%;
 }
 
-.container .card {
+.cont .card {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 0px 48px rgba(141, 151, 158, 0.1);
+          box-shadow: 0px 0px 48px rgba(141, 151, 158, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  height: 101px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  text-align: center;
-  background-color: red;
-  -webkit-box-shadow: 0px 0px 48px rgba(141, 151, 158, 0.1);
-          box-shadow: 0px 0px 48px rgba(141, 151, 158, 0.1);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin-bottom: 9%;
+  padding: 23px 50px;
+}
+
+@media (max-width: 768px) {
+  .cont .card {
+    display: block;
+  }
+}
+
+.cont .card .searchInput input {
+  background: #FFFFFF;
+  border: 1px solid #EFF0F5;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 8px;
-  width: 1110px;
-  height: 101px;
+  margin: 10px;
+  outline: none;
+  width: 100%;
+  height: 38px;
+  padding-left: 17px;
+}
+
+.cont .card .cardSearch {
+  position: absolute;
+  top: 49px;
+  width: 91%;
+  background-color: #fff;
+  left: 35px;
+}
+
+.cont .card .btn button {
+  cursor: pointer;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  background: #00826E;
+  border-radius: 8px;
+  color: #FFFFFF;
+  width: 100%;
+  height: 38px;
+  outline: 0;
+  border: 1px solid #00826E;
 }
 /*# sourceMappingURL=searchInput.module.css.map */

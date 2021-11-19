@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Styles from './assets/salaryRange.module.scss'
-import 'rc-slider/assets/index.css';
 
 
 const salaryRange = () => {

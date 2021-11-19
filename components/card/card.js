@@ -8,18 +8,11 @@ const card = () => {
     <div className="container">
       <h1 className={Styles.head}>Explore other features</h1>
 
-<<<<<<< HEAD
-      <div className={`row ${Styles.card}`}>
-        <div className={`col-12 col-md-5 ${Styles.contant}`}>
-          <div className={Styles.details}>
-            <img className={Styles.imag} src={ImageCard2.src} />
-=======
       <div className="row">
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
               <img className={Styles.imag} src={ImageCard2.src} />
->>>>>>> c036f99743585b525a47e50cb1ee4488495ac582
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>Net Salary Calculator</p>
@@ -37,16 +30,10 @@ const card = () => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-        <div className={`col-12 col-md-5 ${Styles.contant}`}>
-          <div className={Styles.details}>
-            <img className={Styles.imag} src={ImageCard.src} />
-=======
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
               <img className={Styles.imag} src={ImageCard2.src} />
->>>>>>> c036f99743585b525a47e50cb1ee4488495ac582
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>Net Salary Calculator</p>
