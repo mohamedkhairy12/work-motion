@@ -1,14 +1,14 @@
-// import SearchInput from "../components/searchInput/searchInput";
+import Card from "../components/card/card";
+import SearchInput from "../components/searchInput/searchInput";
 import Layout from "../layouts/layout";
 import "../styles/globals.scss";
-import SalaryRange from "../components/salaryRange/salaryRange";
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <SalaryRange />
+      {/* <SalaryRange /> */}
       <Component {...pageProps} />
-
-      {/* <SearchInput /> */}
+      <SearchInput />
+      <Card />
     </Layout>
   );
 }
