@@ -5,7 +5,6 @@ import "../styles/globals.scss";
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      {/* <SalaryRange /> */}
       <Component {...pageProps} />
       <SearchInput />
       <Card />

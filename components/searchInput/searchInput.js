@@ -48,7 +48,21 @@ const SearchInput = () => {
     setGetValuejop(e.target.value);
     console.log(e.target.value);
   };
+  // const getAllCounries =  ()=> {
+    
+  //     axios
+  //       .post(`https://paylab.com/paylab_api/v1/countries`, {
+          
+  //       })
+  //       .then((response) => {
+  //         const data = response.data;
+  //         console.log(response);
+  //       });
+  
+  // }
+  // headers: { Authorization: `Bearer ${accessToken}` },
   useEffect(() => {
+    // getAllCounries()
     const country = posts.filter((person) =>
       person.name.toLowerCase().includes(getValueCountry)
     );

@@ -9,7 +9,7 @@ const card = () => {
       <h1 className={Styles.head}>Explore other features</h1>
 
       <div className={`row ${Styles.card}`}>
-        <div className={`col-12 col-md-6 ${Styles.contant}`}>
+        <div className={`col-12 col-md-5 ${Styles.contant}`}>
           <div className={Styles.details}>
             <img className={Styles.imag} src={ImageCard2.src} />
 
@@ -25,8 +25,7 @@ const card = () => {
             </div>
           </div>
         </div>
-        {/* <div className="col-12 col-md-1" ></div> */}
-        <div className={`col-12 col-md-6 ${Styles.contant}`}>
+        <div className={`col-12 col-md-5 ${Styles.contant}`}>
           <div className={Styles.details}>
             <img className={Styles.imag} src={ImageCard.src} />
 
