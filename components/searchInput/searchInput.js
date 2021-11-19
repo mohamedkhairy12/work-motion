@@ -1,6 +1,5 @@
-// import React from "react";
-// import Styles from "./assets/searchInput.module.scss";
-
+import React, { useState, useEffect } from "react";
+import Styles from "./assets/searchInput.module.scss";
 const SearchInput = () => {
   const [showCountry, setShowCountry] = useState(false);
   const [showJop, setShowJop] = useState(false);
@@ -54,70 +53,71 @@ const SearchInput = () => {
     );
     setNewCountries(country);
     console.log(country);
-
     const jop = posts.filter((person) =>
       person.name.toLowerCase().includes(getValuejop)
     );
     setNewJops(jop);
     console.log(jop);
   }, [getValueCountry, getValuejop]);
-
   const sendDaTa = () => {
     console.log([{ country: countryValue, jop: jopValue }]);
   };
   return (
     <>
-      <div className={`container ${Styles.container}`}>
-        <div className={`row ${Styles.card}`}>
-          <div
-            className={`col-12 col-md-5 ${Styles.searchInput}`}
-            onInput={handleOpenJops}
-          >
-            <input
-              type="text"
-              value={getValuejop}
-              placeholder={jopValue ? jopValue : "Search by job title"}
-              onInput={getjop}
-            />
-            {showJop ? (
-              <div className={Styles.cardSearch}>
-                <ul onClick={getJopsData}>
-                  {newjops.map((post) => (
-                    <li key={post.id}>{post.name}</li>
-                  ))}
-                </ul>
+      <div className="container">
+        <div className={Styles.cont}>
+          <div className="row">
+            <div className={Styles.card}>
+              <div
+                className={`col-12 col-md-5 ${Styles.searchInput}`}
+                onInput={handleOpenJops}
+              >
+                <input
+                  type="text"
+                  value={getValuejop}
+                  placeholder={jopValue ? jopValue : "Search by job title"}
+                  onInput={getjop}
+                />
+                {showJop ? (
+                  <div className={Styles.cardSearch}>
+                    <ul onClick={getJopsData}>
+                      {newjops.map((post) => (
+                        <li key={post.id}>{post.name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
-            ) : null}
-          </div>
-          <div
-            className={`col-12 col-md-5 ${Styles.searchInput}`}
-            onInput={handleOpencountries}
-          >
-            <input
-              type="text"
-              value={getValueCountry}
-              placeholder={
-                countryValue ? countryValue : "Search by city, or country"
-              }
-              onInput={getCountry}
-            />
-            {showCountry ? (
-              <div className={Styles.cardSearch}>
-                <ul onClick={getCountriesData}>
-                  {newCountries.map((post) => (
-                    <li key={post.id}>{post.name}</li>
-                  ))}
-                </ul>
+              <div
+                className={`col-12 col-md-5 ${Styles.searchInput}`}
+                onInput={handleOpencountries}
+              >
+                <input
+                  type="text"
+                  value={getValueCountry}
+                  placeholder={
+                    countryValue ? countryValue : "Search by city, or country"
+                  }
+                  onInput={getCountry}
+                />
+                {showCountry ? (
+                  <div className={Styles.cardSearch}>
+                    <ul onClick={getCountriesData}>
+                      {newCountries.map((post) => (
+                        <li key={post.id}>{post.name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </div>
-            ) : null}
-          </div>
-          <div className={`col-2 col-md-2 ${Styles.btn}`} onClick={sendDaTa}>
-            <button>Search</button>
+              <div className={`col-12 col-md-2 ${Styles.btn}`} onClick={sendDaTa}>
+                <button>Find Salary</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </>
   );
 };
-
-// export default SearchInput;
+export default SearchInput;

@@ -1,13 +1,53 @@
 .ranges {
-    padding: 20px;
+    padding: 20px 20px 50px 20px;
     background: #ffffff;
     box-shadow: 0px 0px 30px rgba(141, 151, 158, 0.25);
     border-radius: 8px;
+    margin-bottom: 42px;
     .title {
         font-family: Archivo;
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
         color: #00234b;
+    }
+    .rangeInfo {
+        position: relative;
+        width: 542px;
+        height: 52px;
+        display: flex;
+        justify-content: center;
+        margin-top: 38px;
+        background: linear-gradient(
+            270deg,
+            rgba(229, 242, 240, 0) 0%,
+            #e5f2f0 4.69%,
+            #e5f2f0 95.31%,
+            rgba(229, 242, 240, 0) 100%
+        );
+        @media(max-width:768px){
+            width: 310px;
+        }
+    }
+    .values {
+        display: flex;
+        width: 542px;
+        justify-content: space-around;
+        margin-top: 2px;
+        @media(max-width:768px){
+            width: 310px;
+        }
+        .min {
+            position: relative;
+            right: 20px;
+        }
+        .max {
+            position: relative;
+            left: 20px;
+        }
+    }
+    .baseSalary{
+        display: block;
+        justify-content: center;
     }
 }

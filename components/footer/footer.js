@@ -50,11 +50,11 @@ const footer = () => {
                     <div className=" col-12 col-sm-9">
                         <p className={Styles.descTwo}>WorkMotion Software GmbH</p>
                     </div>
-                    <div className="col-12 col-sm-3">
+                    {/* <div className="col-12 col-sm-3">
                         <button className={Styles.btn}>
                             Book a free Demo
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
