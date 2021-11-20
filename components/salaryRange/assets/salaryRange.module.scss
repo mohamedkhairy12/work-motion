@@ -25,17 +25,51 @@
             #e5f2f0 95.31%,
             rgba(229, 242, 240, 0) 100%
         );
-        @media(max-width:768px){
+        @media (max-width: 768px) {
             width: 310px;
         }
+    }
+    input[type="radio"] {
+        -webkit-appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 2px solid #064946;
+        border-radius: 50%;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       @media(max-width:768px){
+        width: 19px;
+        height: 19px;
+       }
+    }
+
+    input[type="radio"]:before {
+        content: "";
+        // display: block;
+        width: 67%;
+        height: 66%;
+        border-radius: 50%;
+        margin-top: 0px;
+        border-radius: 50%;
+        @media (max-width: 768px) {
+            width: 64%;
+            height: 67%;
+        }
+    }
+    input[type="radio"]:checked:before {
+        background: #064946;
     }
     .values {
         display: flex;
         width: 542px;
         justify-content: space-around;
         margin-top: 2px;
-        @media(max-width:768px){
-            width: 310px;
+        @media (max-width: 768px) {
+            width: 100%;
+            padding: 0px 20px;
+            font-size: 12px;
         }
         .min {
             position: relative;
@@ -43,11 +77,27 @@
         }
         .max {
             position: relative;
-            left: 20px;
+            left: 38px;
         }
     }
-    .baseSalary{
+    .sort1 {
+        .radios {
+            margin-top: 40px;
+            display: flex;
+            align-items: baseline;
+            @media (max-width: 768px) {
+                margin-top: 25px;
+            }
+        }
+        @media (max-width: 768px) {
+            order: 2;
+        }
+    }
+    .baseSalary {
         display: block;
         justify-content: center;
+        @media (max-width: 768px) {
+            order: 1;
+        }
     }
 }
