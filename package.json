@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.1.1",
-    "axios": "^0.21.1",
     "bootstrap-4-grid": "^3.4.0",
     "next": "11.0.1",
     "rc-rate": "^2.9.1",

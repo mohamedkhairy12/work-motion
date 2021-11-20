@@ -1,0 +1,79 @@
+@media (max-width: 768px) {
+  .footer {
+    background: url("./background.png");
+    width: 100%;
+    background-size: 100% 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .footer {
+    background: url("./background.png");
+    width: 100%;
+    height: 550px;
+    background-size: 100% 100%;
+  }
+}
+
+.footer .cont {
+  position: relative;
+  top: 30%;
+}
+
+.footer .cont .social {
+  margin-top: 24px;
+}
+
+.footer .cont .social img {
+  margin-right: 24px;
+}
+
+.footer .cont p.address {
+  margin-top: 24px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 17px;
+  color: #f8f8fa;
+}
+
+.footer .cont .title {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer .cont .desc {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  width: 150px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.footer .cont .rowTwo {
+  margin-top: 30px;
+}
+
+.footer .cont .rowTwo .descTwo {
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.footer .cont .rowTwo button.btn {
+  width: 188px;
+  height: 47px;
+  background-color: #efeb6a;
+  border-radius: 8px;
+  color: #064946;
+  font-weight: bold;
+  font-size: 16px;
+  outline: 0;
+  border: 1px solid #efeb6a;
+}
+/*# sourceMappingURL=footer.module.css.map */

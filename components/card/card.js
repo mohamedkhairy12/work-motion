@@ -12,7 +12,7 @@ const card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img className={Styles.imag} src={ImageCard2.src} />
+              <img className={Styles.imag} src={ImageCard.src} />
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>Net Salary Calculator</p>
@@ -23,7 +23,7 @@ const card = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
-                <div style={{ display: "flex", justifyContent: "end", position: "relative", top: "17%", right: "6%" }}>
+                <div className={Styles.btn}>
                   <button className={Styles.calc}>Calculate</button>
                 </div>
               </div>
@@ -44,8 +44,8 @@ const card = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
-                <div style={{ display: "flex", justifyContent: "end", position: "relative", top: "17%", right: "6%" }}>
-                  <button className={Styles.calc}>Calculate</button>
+                <div className={Styles.btn}>
+                  <button className={Styles.calc}>Learn More</button>
                 </div>
               </div>
             </div>

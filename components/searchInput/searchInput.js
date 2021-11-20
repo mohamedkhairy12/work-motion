@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Styles from "./assets/searchInput.module.scss";
+import Search from "./assets/image/Search.png";
+
 const SearchInput = () => {
   const [showCountry, setShowCountry] = useState(false);
   const [showJop, setShowJop] = useState(false);
@@ -47,7 +49,21 @@ const SearchInput = () => {
     setGetValuejop(e.target.value);
     console.log(e.target.value);
   };
+  // const getAllCounries =  ()=> {
+
+  //     axios
+  //       .post(`https://paylab.com/paylab_api/v1/countries`, {
+
+  //       })
+  //       .then((response) => {
+  //         const data = response.data;
+  //         console.log(response);
+  //       });
+
+  // }
+  // headers: { Authorization: `Bearer ${accessToken}` },
   useEffect(() => {
+    // getAllCounries()
     const country = posts.filter((person) =>
       person.name.toLowerCase().includes(getValueCountry)
     );
@@ -66,52 +82,59 @@ const SearchInput = () => {
     <>
       <div className="container">
         <div className={Styles.cont}>
-          <div className="row">
-            <div className={Styles.card}>
-              <div
-                className={`col-12 col-md-5 ${Styles.searchInput}`}
-                onInput={handleOpenJops}
-              >
-                <input
-                  type="text"
-                  value={getValuejop}
-                  placeholder={jopValue ? jopValue : "Search by job title"}
-                  onInput={getjop}
-                />
-                {showJop ? (
-                  <div className={Styles.cardSearch}>
-                    <ul onClick={getJopsData}>
-                      {newjops.map((post) => (
-                        <li key={post.id}>{post.name}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
+          <div className={Styles.card}>
+            <div className="row">
+              <div className="col-12 col-md-5" onInput={handleOpenJops}>
+                <div className={Styles.searchInput}>
+                  <input
+                    type="text"
+                    value={getValuejop}
+                    placeholder={jopValue ? jopValue : "Search by job title"}
+                    onInput={getjop}
+                  />
+                  {showJop ? (
+                    <div className={Styles.cardSearch}>
+                      <ul onClick={getJopsData}>
+                        {newjops.map((post) => (
+                          <li key={post.id}>{post.name}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+              <div className="col-12 col-md-5" onInput={handleOpencountries}>
+                <div className={Styles.searchInput}>
+                  <input
+                    type="text"
+                    value={getValueCountry}
+                    placeholder={
+                      countryValue ? countryValue : "Search by city, or country"
+                    }
+                    onInput={getCountry}
+                  />
+                  {showCountry ? (
+                    <div className={Styles.cardSearch}>
+                      <ul onClick={getCountriesData}>
+                        {newCountries.map((post) => (
+                          <li key={post.id}>{post.name}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
               </div>
               <div
-                className={`col-12 col-md-5 ${Styles.searchInput}`}
-                onInput={handleOpencountries}
+                className={`col-12 col-md-2 ${Styles.btn}`}
+                onClick={sendDaTa}
               >
-                <input
-                  type="text"
-                  value={getValueCountry}
-                  placeholder={
-                    countryValue ? countryValue : "Search by city, or country"
-                  }
-                  onInput={getCountry}
-                />
-                {showCountry ? (
-                  <div className={Styles.cardSearch}>
-                    <ul onClick={getCountriesData}>
-                      {newCountries.map((post) => (
-                        <li key={post.id}>{post.name}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-              </div>
-              <div className={`col-12 col-md-2 ${Styles.btn}`} onClick={sendDaTa}>
-                <button>Find Salary</button>
+                <button>
+           
+                  <span style={{marginRight:"12px"}}>
+                    <img src={Search.src} />
+                  </span>
+                  Find Salary
+                </button>
               </div>
             </div>
           </div>
