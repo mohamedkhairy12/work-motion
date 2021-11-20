@@ -14,14 +14,52 @@
   padding: 16px;
 }
 
+@media (max-width: 768px) {
+  .contant {
+    margin-bottom: 16px;
+  }
+}
+
 .contant .details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 8px;
+  position: "relative";
 }
 
-.contant .details .calc {
+@media (max-width: 768px) {
+  .contant .details {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .contant .details .imag {
+    width: 100%;
+  }
+}
+
+.contant .details .btn {
+  position: absolute;
+  right: 7%;
+  top: auto;
+  bottom: 15%;
+}
+
+@media (max-width: 768px) {
+  .contant .details .btn {
+    position: unset;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+.contant .details .btn .calc {
   background: #efeb6a;
   border-radius: 8px;
   color: #064946;

@@ -23,7 +23,7 @@ const card = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
-                <div style={{ display: "flex", justifyContent: "end", position: "relative", top: "17%", right: "6%" }}>
+                <div className={Styles.btn}>
                   <button className={Styles.calc}>Calculate</button>
                 </div>
               </div>
@@ -44,8 +44,8 @@ const card = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
-                <div style={{ display: "flex", justifyContent: "end", position: "relative", top: "17%", right: "6%" }}>
-                  <button className={Styles.calc}>Calculate</button>
+                <div className={Styles.btn}>
+                  <button className={Styles.calc}>Learn More</button>
                 </div>
               </div>
             </div>
