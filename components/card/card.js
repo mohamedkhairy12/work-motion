@@ -12,7 +12,7 @@ const card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img className={Styles.imag} src={ImageCard2.src} />
+              <img className={Styles.imag} src={ImageCard.src} />
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>Net Salary Calculator</p>
