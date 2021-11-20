@@ -9,7 +9,7 @@ const salaryRange = () => {
         <div className="container">
             <div className={Styles.ranges} >
                 <p className={Styles.title}>Graphic Designer Salary in Egypt</p>
-                <hr style={{ border: "1px solid #EFF0F5" }} />
+                <hr/>
                 <div>
 
 
@@ -45,9 +45,9 @@ const salaryRange = () => {
                             </div>
                         </div>
                         <div className={`col-12 col-sm-4 ${Styles.baseSalary}`}>
-                            <p style={{ fontWeight: "bold", color: "#00234B", fontSize: "16px" }}>Monthly</p>
-                            <p style={{ fontWeight: "bold", color: "#00234B", fontSize: "32px", margin: " 10px 0px" }}>6.830 EGP</p>
-                            <p style={{ fontWeight: "bold", color: "#00234B", fontSize: "14px" }}>Avrage base salary</p>
+                            <p className={Styles.month}>Monthly</p>
+                            <p className={Styles.net}>6.830 EGP</p>
+                            <p className={Styles.avg}>Avrage base salary</p>
                         </div>
                     </div>
                 </div>
