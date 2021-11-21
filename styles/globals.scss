@@ -1,0 +1,28 @@
+
+@import "~bootstrap-4-grid/css/grid.min.css";
+/* ---------------------- general ---------------------- */
+body {
+  margin: 0;
+  // background-color: $template-background;
+  background-color: #E5E5E5; 
+  font-size: 14px;
+  * {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    // font-family: "Archivo";
+  }
+}
+main {
+  min-height: calc(100vh - 375px);
+  
+}
+
+main {
+  margin: 40px 0;
+}
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
