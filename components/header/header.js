@@ -1,6 +1,5 @@
 import React from "react";
 import Styles from "./assets/header.module.scss";
-// import Image from "next/image";
 import HeaderPhoto from "./assets/image/header.png";
 
 

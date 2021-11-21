@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Styles from "./assets/searchInput.module.scss";
 import Search from "./assets/image/Search.png";
+import axios from "../../axios";
 
 const SearchInput = () => {
   const [showCountry, setShowCountry] = useState(false);
@@ -49,21 +50,20 @@ const SearchInput = () => {
     setGetValuejop(e.target.value);
     console.log(e.target.value);
   };
-  // const getAllCounries =  ()=> {
+  const getAllCounries =  ()=> {
 
-  //     axios
-  //       .post(`https://paylab.com/paylab_api/v1/countries`, {
+      axios
+        .post(`https://paylab.com/paylab_api/v1/countries`, {
 
-  //       })
-  //       .then((response) => {
-  //         const data = response.data;
-  //         console.log(response);
-  //       });
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log(response);
+        });
 
-  // }
+  }
   // headers: { Authorization: `Bearer ${accessToken}` },
   useEffect(() => {
-    // getAllCounries()
     const country = posts.filter((person) =>
       person.name.toLowerCase().includes(getValueCountry)
     );
@@ -75,9 +75,17 @@ const SearchInput = () => {
     setNewJops(jop);
     console.log(jop);
   }, [getValueCountry, getValuejop]);
+
   const sendDaTa = () => {
     console.log([{ country: countryValue, jop: jopValue }]);
   };
+  useEffect(()=>{
+    axios.get(`countries`)
+    .then((response) => {
+      const data = response.data;
+      console.log(response);
+    });
+  },[])
   return (
     <>
       <div className="container">
