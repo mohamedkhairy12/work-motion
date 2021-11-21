@@ -10,7 +10,7 @@ const footer = () => {
         <div className={Styles.footer}>
             <div className={`container ${Styles.cont}`}>
                 <div className="row">
-                    <div className="col-12 col-sm-2">
+                    <div className="col-12 col-sm-3">
                         <img src={Logo.src} />
                         <div className={Styles.social}>
                             <img src={LinkedIn.src} />
@@ -41,7 +41,7 @@ const footer = () => {
                         <p className={Styles.title}>About Us</p>
                         <p className={Styles.desc}>Meet our team</p>
                     </div>
-                    <div className="col-12 col-sm-2">
+                    <div className="col-12 col-sm-1">
                         <p className={Styles.title}>Careers</p>
                         <p className={Styles.desc}>We're hiring</p>
                     </div>
