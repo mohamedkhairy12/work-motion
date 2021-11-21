@@ -2,6 +2,16 @@
  .img {
     width: 100%;  
     position: relative; 
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .imgRes{
+    width: 100%;  
+    position: relative; 
+    @media (min-width: 768px) {
+      display: none;
+    }
   }
    
 }
