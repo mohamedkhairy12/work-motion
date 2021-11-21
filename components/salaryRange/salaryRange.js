@@ -3,8 +3,7 @@ import Styles from './assets/salaryRange.module.scss'
 
 
 const salaryRange = () => {
-    const [radio, setRadio] = useState('apple');
-    const [active, setActive] = useState(false);
+    const [radio, setRadio] = useState('annual');  
     return (
         <div className="container">
             <div className={Styles.ranges} >
@@ -16,13 +15,13 @@ const salaryRange = () => {
                     <div className="row">
                         <div className={`col-12 col-sm-8 ${Styles.sort1}`}>
                             <div className={Styles.radios}>
-                                <input type="radio" value="apple"
-                                    checked={radio === "apple"} onChange={(e) => { setRadio(e.target.value) }}
-                                    onClick={() => setActive(prev => !prev)} className={active ? 'active' : 'inactive'} />
-                                <label style={{ marginRight: "10px" }}>Annual</label>
+                                <input type="radio" value="annual"
+                                    checked={radio === "annual" ? true : false} onChange={(e) => { setRadio(e.target.value) }}
+                                     />
+                                <label style={{ marginRight: "10px" }} className={radio === "annual" ? Styles.unactive :Styles.active   }>Annual</label>
 
-                                <input type="radio" value="orange" checked={radio === "orange"} onChange={(e) => { setRadio(e.target.value) }} />
-                                <label style={{ marginRight: "10px" }}>Monthly</label>
+                                <input type="radio" value="monthly" checked={radio === "monthly" ? true : false} onChange={(e) => { setRadio(e.target.value) }} />
+                                <label style={{ marginRight: "10px" }} className={radio === "monthly" ? Styles.unactive :Styles.active   }>Monthly</label>
                             </div>
                             <div className={Styles.rangeInfo}>
                                 <span className="col-3" style={{ background: "#F8936D", width: "93px", height: "52px" }}></span>
