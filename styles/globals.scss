@@ -1,5 +1,13 @@
 
 @import "~bootstrap-4-grid/css/grid.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200;0,400;0,500;1,500&display=swap');
+/* ------------ English Fonts ------------ */
+// @font-face {
+//   font-family: 'Archivo';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: local("Archivo Regular"), local("Archivo-Regular"), url(../assets/Archivo-Regular.ttf) format("ttf");
+// }
 /* ---------------------- general ---------------------- */
 body {
   margin: 0;
@@ -8,18 +16,17 @@ body {
   font-size: 14px;
   * {
     box-sizing: border-box;
-    font-family: sans-serif;
-    // font-family: "Archivo";
+    font-family: "Archivo";
   }
 }
 main {
   min-height: calc(100vh - 375px);
+  margin: 40px 0;
   
 }
 
-main {
-  margin: 40px 0;
-}
+
+
 html,
 body,
 #root,

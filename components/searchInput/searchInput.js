@@ -128,11 +128,8 @@ const SearchInput = () => {
                 className={`col-12 col-md-2 ${Styles.btn}`}
                 onClick={sendDaTa}
               >
-                <button>
-           
-                  <span style={{marginRight:"12px"}}>
-                    <img src={Search.src} />
-                  </span>
+                <button> 
+                    <img src={Search.src}  style={{marginRight:"6px"}}/>
                   Find Salary
                 </button>
               </div>

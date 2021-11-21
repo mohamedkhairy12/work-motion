@@ -41,11 +41,17 @@
             width: 310px;
         }
     }
+    .active{
+        color: #ACB9C6;
+    }
+    .unactive{
+        color: #064946;
+    }
     input[type="radio"] {
         -webkit-appearance: none;
         width: 22px;
         height: 22px;
-        border: 2px solid #064946;
+        border: 2px solid #ACB9C6;
         border-radius: 50%;
         outline: none;
         display: flex;
@@ -59,6 +65,7 @@
 
     input[type="radio"]:before {
         content: "";
+        
         // display: block;
         width: 67%;
         height: 66%;
@@ -70,8 +77,12 @@
             height: 67%;
         }
     }
+    input[type="radio"]:checked{
+        border: 2px solid #064946;
+    }
     input[type="radio"]:checked:before {
         background: #064946;
+        
     }
     .values {
         display: flex;
