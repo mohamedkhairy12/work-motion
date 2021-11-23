@@ -5,47 +5,21 @@ import axios from "axios";
 // import axios from "../../axios";
 
 const SearchInput = () => {
-  const [showCountry, setShowCountry] = useState(false);
   const [showJop, setShowJop] = useState(false);
-  const [countryValue, setCountryValue] = useState("");
   const [jopValue, setJopValue] = useState("");
-  const [getValueCountry, setGetValueCountry] = useState("");
   const [getValuejop, setGetValuejop] = useState("");
-  const [newCountries, setNewCountries] = useState("");
   const [newjops, setNewJops] = useState("");
-  const posts = [
-    { id: "1", name: "This first post is about React" },
-    { id: "2", name: "This next post is about Preact" },
-    { id: "3", name: "We have yet another React post!" },
-    { id: "4", name: "This is the fourth and final post" },
-  ];
-  const posts1 = [
-    { id: "1", name: "This first post is about React" },
-    { id: "2", name: "This next post is about Preact" },
-    { id: "3", name: "We have yet another React post!" },
-    { id: "4", name: "This is the fourth and final post" },
-  ];
+  const [apiJops, setApiJops] = useState([]);
+  
   const handleOpenJops = () => {
     setShowJop(true);
   };
-  const handleOpencountries = () => {
-    setShowCountry(true);
-  };
-  const getCountriesData = (e) => {
-    console.log(e.target.firstChild.data);
-    setCountryValue(e.target.firstChild.data);
-    setGetValueCountry("");
-    setShowCountry(false);
-  };
+
   const getJopsData = (e) => {
     console.log(e.target.firstChild.data);
     setJopValue(e.target.firstChild.data);
     setGetValuejop("");
     setShowJop(false);
-  };
-  const getCountry = (e) => {
-    setGetValueCountry(e.target.value);
-    console.log(e.target.value);
   };
   const getjop = (e) => {
     setGetValuejop(e.target.value);
@@ -53,28 +27,23 @@ const SearchInput = () => {
   };
   
   useEffect(() => {
-    const country = posts.filter((person) =>
-      person.name.toLowerCase().includes(getValueCountry)
-    );
-    setNewCountries(country);
-    console.log(country);
-    const jop = posts.filter((person) =>
-      person.name.toLowerCase().includes(getValuejop)
+    axios.get(`http://35.184.155.34/index.php/category_positions`)
+    .then((response) => {
+      const data = response.data.list;
+      setApiJops(response.data.list);
+      console.log(response.data.list);
+    });
+    const jop = apiJops.filter((person) =>
+      person.positionName.toLowerCase().includes(getValuejop)
     );
     setNewJops(jop);
-    console.log(jop);
-  }, [getValueCountry, getValuejop]);
+    console.log(jop,"SSSSSSSSSSSSSS");
+  }, [ getValuejop]);
 
   const sendDaTa = () => {
-    console.log([{ country: countryValue, jop: jopValue }]);
+    console.log([{jop: jopValue }]);
   };
-  useEffect(()=>{
-    axios.get(`http://34.159.137.99/countries`)
-    .then((response) => {
-      const data = response.data;
-      console.log(response);
-    });
-  },[])
+  
   return (
     <>
       <div className="container">
@@ -93,28 +62,7 @@ const SearchInput = () => {
                     <div className={Styles.cardSearch}>
                       <ul onClick={getJopsData}>
                         {newjops.map((post) => (
-                          <li key={post.id}>{post.name}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-              <div className="col-12 col-md-5" onInput={handleOpencountries}>
-                <div className={Styles.searchInput}>
-                  <input
-                    type="text"
-                    value={getValueCountry}
-                    placeholder={
-                      countryValue ? countryValue : "Search by city, or country"
-                    }
-                    onInput={getCountry}
-                  />
-                  {showCountry ? (
-                    <div className={Styles.cardSearch}>
-                      <ul onClick={getCountriesData}>
-                        {newCountries.map((post) => (
-                          <li key={post.id}>{post.name}</li>
+                          <li key={post.id}>{post.positionName}</li>
                         ))}
                       </ul>
                     </div>
