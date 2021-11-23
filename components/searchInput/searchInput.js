@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Styles from "./assets/searchInput.module.scss";
 import Search from "./assets/image/Search.png";
+import axios from "axios";
 // import axios from "../../axios";
 
 const SearchInput = () => {
@@ -50,19 +51,7 @@ const SearchInput = () => {
     setGetValuejop(e.target.value);
     console.log(e.target.value);
   };
-  // const getAllCounries =  ()=> {
 
-  //     axios
-  //       .post(`https://paylab.com/paylab_api/v1/countries`, {
-
-  //       })
-  //       .then((response) => {
-  //         const data = response.data;
-  //         console.log(response);
-  //       });
-
-  // }
-  // headers: { Authorization: `Bearer ${accessToken}` },
   useEffect(() => {
     const country = posts.filter((person) =>
       person.name.toLowerCase().includes(getValueCountry)
@@ -79,13 +68,13 @@ const SearchInput = () => {
   const sendDaTa = () => {
     console.log([{ country: countryValue, jop: jopValue }]);
   };
-  // useEffect(()=>{
-  //   axios.get(`countries`)
-  //   .then((response) => {
-  //     const data = response.data;
-  //     console.log(response);
-  //   });
-  // },[])
+  useEffect(()=>{
+    axios.get(`http://34.159.137.99/countries`)
+    .then((response) => {
+      const data = response.data;
+      console.log(response,"ressss");
+    });
+  },[])
   return (
     <>
       <div className="container">

@@ -2,8 +2,12 @@ import React from "react";
 import ImageCard from "./assets/image/unsplash_Ay5VDmOaKBo.png";
 import ImageCard2 from "./assets/image/unsplash_JBwcenOuRCg.png";
 import Styles from "./assets/card.module.scss";
+import Link from "next/link";
 
 const card = () => {
+  // const goToSalary = () =>{  
+  //   window.location.href="/SalaryCalculator";
+  // }
   return (
     <div className="container">
       <h1 className={Styles.head}>Explore other features</h1>
@@ -24,7 +28,9 @@ const card = () => {
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
                 <div className={Styles.btn}>
-                  <button className={Styles.calc}>Calculate</button>
+                  <Link href="/SalariesCalculator">
+                    <button className={Styles.calc} >Calculate</button>
+                  </Link>
                 </div>
               </div>
             </div>
