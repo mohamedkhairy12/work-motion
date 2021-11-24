@@ -1,6 +1,9 @@
 .cont {
   width: 100%;
   margin-top: -11%;
+  @media (max-width: 768px) {
+    margin-top: -25%;
+  }
   .card {
     background: #ffffff;
     box-shadow: 0px 0px 48px rgba(141, 151, 158, 0.1);
@@ -36,6 +39,7 @@
       width: 91%;
       background-color: #fff;
       left: 35px;
+      z-index: 3;
     }
     .btn {
       button {
@@ -44,7 +48,7 @@
         justify-content: center;
         line-height: 2.7;
         cursor: pointer;
-        // font-family: "Work Sans";
+        font-family: "Archivo";
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
