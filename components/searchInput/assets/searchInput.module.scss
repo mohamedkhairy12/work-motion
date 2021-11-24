@@ -36,10 +36,16 @@
     .cardSearch {
       position: absolute;
       top: 49px;
-      width: 91%;
+      width: 90%;
       background-color: #fff;
-      left: 35px;
-      z-index: 3;
+      left: 17px;
+      z-index: 1000;
+      /* overflow: scroll; */
+      height: 145px;
+      overflow-y: scroll;
+      .select {
+        margin-bottom: 20px;
+      }
     }
     .btn {
       button {

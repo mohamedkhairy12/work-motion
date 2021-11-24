@@ -9,7 +9,7 @@ const salaryRange = (props) => {
             {props.getRanges ?
                 <div className="container">
                     <div className={Styles.ranges} >
-                        <p className={Styles.title}>Graphic Designer Salary in Egypt</p>
+                        <p className={Styles.title}>{props.getValuejop} Salary in {props.getValueCountry}</p>
                         <hr />
                         <div>
                             <div className="row">

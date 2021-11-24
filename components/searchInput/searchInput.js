@@ -14,14 +14,15 @@ const SearchInput = () => {
   const [getRanges, setGetRanges] = useState("");
 
   ////////////////////countries/////////////////////
+
   const [showCountry, setShowCountry] = useState(false);
   const [countryValue, setCountryValue] = useState("");
   const [getValueCountry, setGetValueCountry] = useState("");
   const [newCountries, setNewCountries] = useState("");
   const [api, setApi] = useState([]);
+  const [allCountries, setAllCountries] = useState([]);
   const [countryID, setCountryID] = useState("");
   const [JobID, setJobID] = useState("");
-  const [openMenu, setopenMenu] = useState(false);
 
   const handleOpenJops = () => {
     setShowJop(true);
@@ -50,16 +51,20 @@ const SearchInput = () => {
     setNewJops([]);
     console.log("GEHAD IS ::: ", e.target.firstChild.data);
     setGetValuejop(e.target.firstChild.data);
+    setShowJop(false);
   };
+
   const catchJopids = (post) => {
     setGetValuejop(post.positionName);
-    setJobID(post);
+    setJobID(post.id);
+    console.log(post.id, "jops");
   };
   useEffect(() => {
     axios
       .get(`http://35.184.155.34/index.php/category_positions`)
       .then((response) => {
         setallJobs(response.data.list);
+        console.log(response.data.list);
       })
       .catch((error) => {});
   }, []);
@@ -75,48 +80,70 @@ const SearchInput = () => {
   }, [getValuejop]);
 
   const onChangeValueJob = (e) => {
-    console.log("===============new e=====================");
-    console.log(e);
-    console.log("====================================");
+
     setGetValuejop(e.target.value);
+    
     if (!e.target.value) setNewJops([]);
   };
+  /////////////  countries ///////////////////////
 
-  // const handleOpencountries = () => {
-  //   setShowCountry(true);
-  // };
-  // const getCountriesData = (e) => {
-  //   console.log(e.currentTarget.firstChild.data, "ssssss");
+  const handleOpencountries = () => {
+    setShowCountry(true);
+  };
+  function useOutsidecountries(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          // alert("You clicked outside of me!");
+          setNewCountries([]);
+        }
+      }
 
-  //   setCountryValue(e.target.firstChild.data);
-  //   // setGetValueCountry("");
-  //   // getValueCountry
-  //   setGetValueCountry(e.target.firstChild.data);
-  //   setShowCountry(false);
-  // };
-  // const catchCountryids = (post) => {
-  //   console.log(post, "ssssss");
-  //   setCountryID(post);
-  // };
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  const getCountriesData = (e) => {
+    setNewCountries([]);
+    console.log("GEHAD IS ::: ", e.target.firstChild.data);
+    setGetValueCountry(e.target.firstChild.data);
+    setShowCountry(false)
+  };
+  const catchCountryids = (post) => {
+    setGetValueCountry(post.positionName);
+    setCountryID(post.id);
+    console.log(post.id, "countries");
+  };
 
-  // const getCountry = (e) => {
-  //   setGetValueCountry(e.target.value);
-  //   console.log(e.target.value);
-  // };
   useEffect(() => {
-    axios.get(`http://35.184.155.34/index.php/countries`).then((response) => {
-      const data = response.data;
-      setApi(response.data.list);
-      console.log(response.data.list);
-      console.log(api);
-    });
-    const country = api.filter((person) =>
-      person.name.toLowerCase().includes(getValueCountry)
-    );
-    setNewCountries(country);
-    console.log(country);
-  }, [getValueCountry]);
+    axios
+      .get(`http://35.184.155.34/index.php/countries`)
+      .then((response) => {
+        setAllCountries(response.data.list);
+      })
+      .catch((error) => {});
+  }, []);
 
+  useEffect(() => {
+    if (getValueCountry) {
+      setNewCountries(
+        allCountries?.filter((person) => person.name.includes(getValueCountry))
+      );
+    } else {
+      setNewCountries([]);
+    }
+  }, [getValueCountry]);
+  const onChangeValueCountries = (e) => {
+    setGetValueCountry(e.target.value);
+    if (!e.target.value) setNewCountries([]);
+  };
   const sendDaTa = async () => {
     try {
       await axios
@@ -134,7 +161,9 @@ const SearchInput = () => {
   };
 
   const wrapperRef = useRef(null);
+  const wrappercountries = useRef(null);
   useOutsideAlerter(wrapperRef);
+  useOutsidecountries(wrappercountries);
 
   return (
     <>
@@ -150,49 +179,52 @@ const SearchInput = () => {
                     value={getValuejop}
                     placeholder="Search by job title"
                     onInput={onChangeValueJob}
-                    // onBlur={onBlur}
                   />
 
-                  <div ref={wrapperRef} className={Styles.cardSearch}>
-                    <ul onClick={getJopsData}>
-                      {newjops &&
-                        newjops?.map((post) => (
-                          <li
-                            style={{ backgroundColor: "red", marginBlock: 5 }}
-                            onClick={() => catchJopids(post)}
-                            key={post.id}
-                          >
-                            {post.positionName}
-                          </li>
-                        ))}
-                    </ul>
+                  <div ref={wrapperRef} >
+                    {getValuejop && showJop? (
+                      <ul className={Styles.cardSearch} onClick={getJopsData}>
+                        {newjops &&
+                          newjops?.map((post) => (
+                            <p
+                              className={Styles.select}
+                              onClick={() => catchJopids(post)}
+                              key={post.id}
+                            >
+                              {post.positionName}
+                            </p>
+                          ))}
+                      </ul>
+                    ) : null}
                   </div>
                 </div>
               </div>
 
-              {/* <div className="col-12 col-md-5" onInput={handleOpencountries}>
-                <div className={Styles.searchInput}>
+              <div className="col-12 col-md-5" onInput={handleOpencountries}>
+               <div className={Styles.searchInput}>
                   <input
                     id="red"
                     type="text"
                     value={getValueCountry}
                     placeholder={"Search by city, or country"}
-                    onInput={getCountry}
+                    onInput={onChangeValueCountries}
                   />
-                  {showCountry ? (
-                    <div className={Styles.cardSearch}>
-                      <ul onClick={getCountriesData}>
-                        {newCountries.map((post) => (
-                          <li
-                            onClick={() => catchCountryids(post.id)}
+
+                  <div ref={wrappercountries} >
+                  {getValueCountry && showCountry? ( <ul className={Styles.cardSearch} onClick={getCountriesData}>
+                      {newCountries &&
+                        newCountries?.map((post) => (
+                          <p
+                          className={Styles.select}
+                            onClick={() => catchCountryids(post)}
                             key={post.id}
                           >
                             {post.name}
-                          </li>
+                          </p>
                         ))}
-                      </ul>
-                    </div>
-                  ) : null}
+                    </ul>
+                    ) : null}
+                  </div>
                 </div>
               </div>
               <div
@@ -205,12 +237,16 @@ const SearchInput = () => {
                   </span>
                   Find Salary
                 </button>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <SalaryRange getRanges={getRanges} />
+      <SalaryRange
+        getRanges={getRanges}
+        getValueCountry={getValueCountry}
+        getValuejop={getValuejop}
+      />
     </>
   );
 };
