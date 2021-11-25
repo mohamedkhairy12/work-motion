@@ -37,6 +37,7 @@ const SearchInput = () => {
         if (ref.current && !ref.current.contains(event.target)) {
           // alert("You clicked outside of me!");
           setNewJops([]);
+          setShowJop(false)
         }
       }
 
@@ -100,6 +101,7 @@ const SearchInput = () => {
         if (ref.current && !ref.current.contains(event.target)) {
           // alert("You clicked outside of me!");
           setNewCountries([]);
+          setShowCountry("")
         }
       }
 
@@ -189,13 +191,13 @@ const SearchInput = () => {
                       <ul className={Styles.cardSearch} onClick={getJopsData}>
                         {newjops &&
                           newjops?.map((post) => (
-                            <p
+                            <li
                               className={Styles.select}
                               onClick={() => catchJopids(post)}
                               key={post.id}
                             >
                               {post.positionName}
-                            </p>
+                            </li>
                           ))}
                       </ul>
                     ) : null}
@@ -217,13 +219,13 @@ const SearchInput = () => {
                   {getValueCountry && showCountry? ( <ul className={Styles.cardSearch} onClick={getCountriesData}>
                       {newCountries &&
                         newCountries?.map((post) => (
-                          <p
+                          <li
                           className={Styles.select}
                             onClick={() => catchCountryids(post)}
                             key={post.id}
                           >
                             {post.name}
-                          </p>
+                          </li>
                         ))}
                     </ul>
                     ) : null}
