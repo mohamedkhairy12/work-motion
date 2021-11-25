@@ -2,6 +2,7 @@ import React from "react";
 import ImageCard from "./assets/image/unsplash_Ay5VDmOaKBo.png";
 import ImageCard2 from "./assets/image/unsplash_JBwcenOuRCg.png";
 import Styles from "./assets/card.module.scss";
+import Link from 'next/link'
 
 const card = () => {
   return (
@@ -23,9 +24,11 @@ const card = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
+                <Link href="/SalariesCalculator">
                 <div className={Styles.btn}>
                   <button className={Styles.calc}>Calculate</button>
                 </div>
+                </Link>
               </div>
             </div>
           </div>

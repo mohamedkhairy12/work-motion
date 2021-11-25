@@ -3,11 +3,10 @@ import Styles from "./assets/searchInput.module.scss";
 import Search from "./assets/image/Search.png";
 import SalaryRange from "../salaryRange/salaryRange";
 import axios from "axios";
-// import axios from "../../axios";
-
 const SearchInput = () => {
   const [showJop, setShowJop] = useState(false);
   const [nameJop, setNameJop] = useState("");
+  const [erorr, setErorr] = useState("");
   // const [jopValue, setJopValue] = useState("");
   const [getValuejop, setGetValuejop] = useState("");
   const [allJobs, setallJobs] = useState([]);
@@ -161,9 +160,11 @@ const SearchInput = () => {
           console.log(response.data.currency, "ressssssssss");
         });
     } catch (e) {
-      document.getElementById("red").style.borderColor = "red";
+      setErorr(e.response.status)
+      // document.getElementById("red").style.borderColor = "red";
       console.log(e);
     }
+   
   };
 
   const wrapperRef = useRef(null);
@@ -248,13 +249,14 @@ const SearchInput = () => {
           </div>
         </div>
       </div>
-      <SalaryRange
+      {erorr!=404 &&<SalaryRange
         getRanges={getRanges}
         getValueCountry={getValueCountry}
         getValuejop={getValuejop}
         nameJop={nameJop}
         nameCountry={nameCountry}
       />
+      }
     </>
   );
 };
