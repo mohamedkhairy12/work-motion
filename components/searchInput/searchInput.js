@@ -24,7 +24,7 @@ const SearchInput = () => {
 
   const [showJop, setShowJop] = useState(false);
   const [nameJop, setNameJop] = useState("");
-  const [erorr, setErorr] = useState("");
+  // const [erorr, setErorr] = useState("");
   // const [jopValue, setJopValue] = useState("");
   const [getValuejop, setGetValuejop] = useState("");
   const [allJobs, setallJobs] = useState([]);
@@ -41,7 +41,7 @@ const SearchInput = () => {
   const [api, setApi] = useState([]);
   const [allCountries, setAllCountries] = useState([]);
   const [countryID, setCountryID] = useState("");
-  const [JobID, setJobID] = useState("");
+  const [jobID, setJobID] = useState(null);
 
   const handleOpenJops = () => {
     setShowJop(true);
@@ -100,8 +100,10 @@ const SearchInput = () => {
   }, [getValuejop]);
 
   const onChangeValueJob = (e) => {
+    if (getValuejop.length > e.target.value) {
+      setJobID(null);
+    }
     setGetValuejop(e.target.value);
-
     if (!e.target.value) setNewJops([]);
   };
   /////////////  countries ///////////////////////
@@ -170,15 +172,16 @@ const SearchInput = () => {
     try {
       await axios
         .get(
-          `http://35.184.155.34/index.php/country/${countryID}/position/${JobID}/advanced`
+          `http://35.184.155.34/index.php/country/${countryID}/position/${jobID}/advanced`
         )
         .then((response) => {
           setGetRanges(response.data);
           console.log(response.data.currency, "ressssssssss");
         });
     } catch (e) {
-      setErorr(e.response.status);
+      // setErorr(e.response.status);
       // document.getElementById("red").style.borderColor = "red";
+
       console.log(e);
     }
   };
@@ -214,7 +217,14 @@ const SearchInput = () => {
                         placeholder="Search by job title"
                         onInput={onChangeValueJob}
                       />
-                      <ErrorMessage name="name" render={msg => <div style={{color:"red",marginTop:"10px"}}>{msg}</div>} />
+                      <ErrorMessage
+                        name="name"
+                        render={(msg) => (
+                          <div style={{ color: "red", marginTop: "10px" }}>
+                            {msg}
+                          </div>
+                        )}
+                      />
 
                       <div ref={wrapperRef}>
                         {getValuejop && showJop ? (
@@ -252,7 +262,14 @@ const SearchInput = () => {
                         placeholder={"Search by city, or country"}
                         onInput={onChangeValueCountries}
                       />
-                      <ErrorMessage name="counries" render={msg => <div style={{color:"red",marginTop:"10px"}}>{msg}</div>} />
+                      <ErrorMessage
+                        name="counries"
+                        render={(msg) => (
+                          <div style={{ color: "red", marginTop: "10px" }}>
+                            {msg}
+                          </div>
+                        )}
+                      />
                       <div ref={wrappercountries}>
                         {getValueCountry && showCountry ? (
                           <ul
@@ -293,13 +310,15 @@ const SearchInput = () => {
       </div>
       {/* <Input /> */}
 
-      <SalaryRange
-        getRanges={getRanges}
-        getValueCountry={getValueCountry}
-        getValuejop={getValuejop}
-        nameJop={nameJop}
-        nameCountry={nameCountry}
-      />
+      {jobID && (
+        <SalaryRange
+          getRanges={getRanges}
+          getValueCountry={getValueCountry}
+          getValuejop={getValuejop}
+          nameJop={nameJop}
+          nameCountry={nameCountry}
+        />
+      )}
     </>
   );
 };
