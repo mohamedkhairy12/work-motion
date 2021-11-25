@@ -32,31 +32,27 @@
       @media (max-width: 768px) {
         margin-bottom: 16px;
       }
-    }
-    .cardSearch {
-      position: absolute;
-      top: 49px;
-      width: 90%;
-      background-color: #fff;
-      left: 17px;
-      z-index: 1000;
-      height: 145px;
-      overflow-y: scroll;
 
-      .select {
-        padding: 10px;
-        list-style: none;
-        cursor: pointer;
+      .cardSearch {
+        position: absolute;
+        top: 49px;
+        width: 90%;
+        background-color: #fff;
+        left: 17px;
+        z-index: 1000;
+        height: 145px;
+        overflow-y: scroll;
 
-        &:hover{
-          background-color: rgb(243, 236, 236);
+        .select {
+          padding: 10px;
+          list-style: none;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgb(243, 236, 236);
+          }
         }
       }
-      
-    }
-    .ss{
-      height: 0;
-      overflow-y: hidden;
     }
     .btn {
       button {
