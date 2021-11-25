@@ -9,7 +9,7 @@ const salaryRange = (props) => {
             {props.getRanges ?
                 <div className="container">
                     <div className={Styles.ranges} >
-                        <p className={Styles.title}>{props.getValuejop} Salary in {props.getValueCountry}</p>
+                        <p className={Styles.title}>{props.nameJop} Salary in {props.nameCountry}</p>
                         <hr />
                         <div>
                             <div className="row">
@@ -45,7 +45,7 @@ const salaryRange = (props) => {
                                 </div>
                                 <div className={`col-12 col-sm-4 ${Styles.baseSalary}`}>
                                     <p className={Styles.month}>{radio}</p>
-                                    <p className={Styles.net}>{radio === "Annual" ? props.getRanges.quantiles.average : Math.ceil(props.getRanges.quantiles.average / 12)} EGP</p>
+                                    <p className={Styles.net}>{radio === "Annual" ? props.getRanges.quantiles.average : Math.ceil(props.getRanges.quantiles.average / 12)} {props.getRanges.currency}</p>
                                     <p className={Styles.avg}>Average base salary</p>
                                 </div>
                             </div>

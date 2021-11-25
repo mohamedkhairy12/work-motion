@@ -7,6 +7,7 @@ import axios from "axios";
 
 const SearchInput = () => {
   const [showJop, setShowJop] = useState(false);
+  const [nameJop, setNameJop] = useState("");
   // const [jopValue, setJopValue] = useState("");
   const [getValuejop, setGetValuejop] = useState("");
   const [allJobs, setallJobs] = useState([]);
@@ -15,7 +16,7 @@ const SearchInput = () => {
 
   ////////////////////countries/////////////////////
 
-  // const [hhhhhhh, setHhhhhhh] = useState(false);
+   const [nameCountry, setNameCountry] = useState("");
   const [showCountry, setShowCountry] = useState(false);
   const [countryValue, setCountryValue] = useState("");
   const [getValueCountry, setGetValueCountry] = useState("");
@@ -148,8 +149,8 @@ const SearchInput = () => {
     if (!e.target.value) setNewCountries([]);
   };
   const sendDaTa = async () => {
-    // setHhhhhhh(getValueCountry)
-
+     setNameCountry(getValueCountry)
+    setNameJop(getValuejop)
     try {
       await axios
         .get(
@@ -251,7 +252,8 @@ const SearchInput = () => {
         getRanges={getRanges}
         getValueCountry={getValueCountry}
         getValuejop={getValuejop}
-        // hhhhhhh={hhhhhhh}
+        nameJop={nameJop}
+        nameCountry={nameCountry}
       />
     </>
   );
