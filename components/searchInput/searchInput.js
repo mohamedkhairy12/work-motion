@@ -3,7 +3,25 @@ import Styles from "./assets/searchInput.module.scss";
 import Search from "./assets/image/Search.png";
 import SalaryRange from "../salaryRange/salaryRange";
 import axios from "axios";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 const SearchInput = () => {
+  const validationSchema = Yup.object({
+    name: Yup.string().required(),
+    counries: Yup.string().required(),
+    wouldRecommend: Yup.boolean().default(false),
+  });
+
+  const initialValues = {
+    name: "",
+    counries: "",
+    wouldRecommend: false,
+  };
+
+  const onSubmit = (values) => {
+    alert(JSON.stringify(values, null, 2));
+  };
+
   const [showJop, setShowJop] = useState(false);
   const [nameJop, setNameJop] = useState("");
   const [erorr, setErorr] = useState("");
@@ -15,7 +33,7 @@ const SearchInput = () => {
 
   ////////////////////countries/////////////////////
 
-   const [nameCountry, setNameCountry] = useState("");
+  const [nameCountry, setNameCountry] = useState("");
   const [showCountry, setShowCountry] = useState(false);
   const [countryValue, setCountryValue] = useState("");
   const [getValueCountry, setGetValueCountry] = useState("");
@@ -37,7 +55,7 @@ const SearchInput = () => {
         if (ref.current && !ref.current.contains(event.target)) {
           // alert("You clicked outside of me!");
           setNewJops([]);
-          setShowJop(false)
+          setShowJop(false);
         }
       }
 
@@ -82,9 +100,8 @@ const SearchInput = () => {
   }, [getValuejop]);
 
   const onChangeValueJob = (e) => {
-
     setGetValuejop(e.target.value);
-    
+
     if (!e.target.value) setNewJops([]);
   };
   /////////////  countries ///////////////////////
@@ -101,7 +118,7 @@ const SearchInput = () => {
         if (ref.current && !ref.current.contains(event.target)) {
           // alert("You clicked outside of me!");
           setNewCountries([]);
-          setShowCountry("")
+          setShowCountry("");
         }
       }
 
@@ -117,7 +134,7 @@ const SearchInput = () => {
     setNewCountries([]);
     console.log("GEHAD IS ::: ", e.target.firstChild.data);
     setGetValueCountry(e.target.firstChild.data);
-    setShowCountry(false)
+    setShowCountry(false);
   };
   const catchCountryids = (post) => {
     setGetValueCountry(post.positionName);
@@ -148,8 +165,8 @@ const SearchInput = () => {
     if (!e.target.value) setNewCountries([]);
   };
   const sendDaTa = async () => {
-     setNameCountry(getValueCountry)
-    setNameJop(getValuejop)
+    setNameCountry(getValueCountry);
+    setNameJop(getValuejop);
     try {
       await axios
         .get(
@@ -160,11 +177,10 @@ const SearchInput = () => {
           console.log(response.data.currency, "ressssssssss");
         });
     } catch (e) {
-      setErorr(e.response.status)
+      setErorr(e.response.status);
       // document.getElementById("red").style.borderColor = "red";
       console.log(e);
     }
-   
   };
 
   const wrapperRef = useRef(null);
@@ -177,86 +193,114 @@ const SearchInput = () => {
       <div className="container">
         <div className={Styles.cont}>
           <div className={Styles.card}>
-            <div className="row">
-              <div className="col-12 col-md-5" onInput={handleOpenJops}>
-                <div className={Styles.searchInput}>
-                  <input
-                    id="red"
-                    type="text"
-                    value={getValuejop}
-                    placeholder="Search by job title"
-                    onInput={onChangeValueJob}
-                  />
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={async (values, { resetForm }) => {
+                await onSubmit(values);
+                resetForm();
+              }}
+            >
+              <Form>
+                <div className="row">
+                  <div className="col-12 col-md-5" onInput={handleOpenJops}>
+                    <div className={Styles.searchInput}>
+                      <Field
+                        autoComplete="off"
+                        name="name"
+                        id="red"
+                        type="text"
+                        value={getValuejop}
+                        placeholder="Search by job title"
+                        onInput={onChangeValueJob}
+                      />
+                      <ErrorMessage name="name" />
 
-                  <div ref={wrapperRef} >
-                    {getValuejop && showJop? (
-                      <ul className={Styles.cardSearch} onClick={getJopsData}>
-                        {newjops &&
-                          newjops?.map((post) => (
-                            <li
-                              className={Styles.select}
-                              onClick={() => catchJopids(post)}
-                              key={post.id}
-                            >
-                              {post.positionName}
-                            </li>
-                          ))}
-                      </ul>
-                    ) : null}
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-5" onInput={handleOpencountries}>
-               <div className={Styles.searchInput}>
-                  <input
-                    id="red"
-                    type="text"
-                    value={getValueCountry}
-                    placeholder={"Search by city, or country"}
-                    onInput={onChangeValueCountries}
-                  />
-
-                  <div ref={wrappercountries} >
-                  {getValueCountry && showCountry? ( <ul className={Styles.cardSearch} onClick={getCountriesData}>
-                      {newCountries &&
-                        newCountries?.map((post) => (
-                          <li
-                          className={Styles.select}
-                            onClick={() => catchCountryids(post)}
-                            key={post.id}
+                      <div ref={wrapperRef}>
+                        {getValuejop && showJop ? (
+                          <ul
+                            className={Styles.cardSearch}
+                            onClick={getJopsData}
                           >
-                            {post.name}
-                          </li>
-                        ))}
-                    </ul>
-                    ) : null}
+                            {newjops &&
+                              newjops?.map((post) => (
+                                <li
+                                  className={Styles.select}
+                                  onClick={() => catchJopids(post)}
+                                  key={post.id}
+                                >
+                                  {post.positionName}
+                                </li>
+                              ))}
+                          </ul>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    className="col-12 col-md-5"
+                    onInput={handleOpencountries}
+                  >
+                    <div className={Styles.searchInput}>
+                      <Field
+                        autoComplete="off"
+                        name="counries"
+                        id="red"
+                        type="text"
+                        value={getValueCountry}
+                        placeholder={"Search by city, or country"}
+                        onInput={onChangeValueCountries}
+                      />
+                      <ErrorMessage name="counries" />
+                      <div ref={wrappercountries}>
+                        {getValueCountry && showCountry ? (
+                          <ul
+                            className={Styles.cardSearch}
+                            onClick={getCountriesData}
+                          >
+                            {newCountries &&
+                              newCountries?.map((post) => (
+                                <li
+                                  className={Styles.select}
+                                  onClick={() => catchCountryids(post)}
+                                  key={post.id}
+                                >
+                                  {post.name}
+                                </li>
+                              ))}
+                          </ul>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`col-12 col-md-2 ${Styles.btn}`}
+                    onClick={sendDaTa}
+                  >
+                    <button type="submit" className="button is-primary">
+                      <span style={{ marginRight: "12px" }}>
+                        <img src={Search.src} />
+                      </span>
+                      Find Salary
+                    </button>
                   </div>
                 </div>
-              </div>
-              <div
-                className={`col-12 col-md-2 ${Styles.btn}`}
-                onClick={sendDaTa}
-              >
-                <button>
-                  <span style={{ marginRight: "12px" }}>
-                    <img src={Search.src} />
-                  </span>
-                  Find Salary
-                </button>
-              </div>
-            </div>
+              </Form>
+            </Formik>
           </div>
         </div>
       </div>
-      {erorr!=404 &&<SalaryRange
-        getRanges={getRanges}
-        getValueCountry={getValueCountry}
-        getValuejop={getValuejop}
-        nameJop={nameJop}
-        nameCountry={nameCountry}
-      />
-      }
+      {/* <Input /> */}
+      {erorr != 404 && (
+        <SalaryRange
+          getRanges={getRanges}
+          getValueCountry={getValueCountry}
+          getValuejop={getValuejop}
+          nameJop={nameJop}
+          nameCountry={nameCountry}
+        />
+      )}
     </>
   );
 };
