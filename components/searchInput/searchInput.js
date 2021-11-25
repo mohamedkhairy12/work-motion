@@ -19,7 +19,7 @@ const SearchInput = () => {
   };
 
   const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    console.log(JSON.stringify(values, null, 2));
   };
 
   const [showJop, setShowJop] = useState(false);
@@ -214,7 +214,7 @@ const SearchInput = () => {
                         placeholder="Search by job title"
                         onInput={onChangeValueJob}
                       />
-                      <ErrorMessage name="name" />
+                      <ErrorMessage name="name" render={msg => <div style={{color:"red",marginTop:"10px"}}>{msg}</div>} />
 
                       <div ref={wrapperRef}>
                         {getValuejop && showJop ? (
@@ -252,7 +252,7 @@ const SearchInput = () => {
                         placeholder={"Search by city, or country"}
                         onInput={onChangeValueCountries}
                       />
-                      <ErrorMessage name="counries" />
+                      <ErrorMessage name="counries" render={msg => <div style={{color:"red",marginTop:"10px"}}>{msg}</div>} />
                       <div ref={wrappercountries}>
                         {getValueCountry && showCountry ? (
                           <ul
@@ -292,15 +292,14 @@ const SearchInput = () => {
         </div>
       </div>
       {/* <Input /> */}
-      {erorr != 404 && (
-        <SalaryRange
-          getRanges={getRanges}
-          getValueCountry={getValueCountry}
-          getValuejop={getValuejop}
-          nameJop={nameJop}
-          nameCountry={nameCountry}
-        />
-      )}
+
+      <SalaryRange
+        getRanges={getRanges}
+        getValueCountry={getValueCountry}
+        getValuejop={getValuejop}
+        nameJop={nameJop}
+        nameCountry={nameCountry}
+      />
     </>
   );
 };
