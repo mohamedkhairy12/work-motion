@@ -29,7 +29,7 @@ const SearchInput = () => {
   const [getValuejop, setGetValuejop] = useState("");
   const [allJobs, setallJobs] = useState([]);
   const [newjops, setNewJops] = useState("");
-  const [getRanges, setGetRanges] = useState("");
+  const [getRanges, setGetRanges] = useState(null);
 
   ////////////////////countries/////////////////////
 
@@ -54,6 +54,7 @@ const SearchInput = () => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           // alert("You clicked outside of me!");
+
           setNewJops([]);
           setShowJop(false);
         }
@@ -100,7 +101,7 @@ const SearchInput = () => {
   }, [getValuejop]);
 
   const onChangeValueJob = (e) => {
-    if (getValuejop.length > e.target.value) {
+    if (getValuejop.length > e.target.value.length) {
       setJobID(null);
     }
     setGetValuejop(e.target.value);
@@ -167,22 +168,27 @@ const SearchInput = () => {
     if (!e.target.value) setNewCountries([]);
   };
   const sendDaTa = async () => {
-    setNameCountry(getValueCountry);
-    setNameJop(getValuejop);
-    try {
-      await axios
-        .get(
-          `http://35.184.155.34/index.php/country/${countryID}/position/${jobID}/advanced`
-        )
-        .then((response) => {
-          setGetRanges(response.data);
-          console.log(response.data.currency, "ressssssssss");
-        });
-    } catch (e) {
-      // setErorr(e.response.status);
-      // document.getElementById("red").style.borderColor = "red";
+    if (countryID && jobID) {
+      setNameCountry(getValueCountry);
+      setNameJop(getValuejop);
+      setGetRanges(null);
+      try {
+        await axios
+          .get(
+            `http://35.184.155.34/index.php/country/${countryID}/position/${jobID}/advanced`
+          )
+          .then((response) => {
+            setGetRanges(response.data);
+            console.log(response.data.currency, "ressssssssss");
+          });
+      } catch (e) {
+        // setErorr(e.response.status);
+        // document.getElementById("red").style.borderColor = "red";
 
-      console.log(e);
+        console.log(e);
+      }
+    } else {
+
     }
   };
 
@@ -310,15 +316,13 @@ const SearchInput = () => {
       </div>
       {/* <Input /> */}
 
-      {jobID && (
-        <SalaryRange
-          getRanges={getRanges}
-          getValueCountry={getValueCountry}
-          getValuejop={getValuejop}
-          nameJop={nameJop}
-          nameCountry={nameCountry}
-        />
-      )}
+      <SalaryRange
+        getRanges={getRanges}
+        getValueCountry={getValueCountry}
+        getValuejop={getValuejop}
+        nameJop={nameJop}
+        nameCountry={nameCountry}
+      />
     </>
   );
 };
