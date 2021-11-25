@@ -12,7 +12,7 @@ const card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img className={Styles.imag} src={ImageCard.src} />
+              <img className={Styles.imag} src={ImageCard2.src} />
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>Net Salary Calculator</p>
@@ -33,12 +33,13 @@ const card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img className={Styles.imag} src={ImageCard2.src} />
+              <img className={Styles.imag} src={ImageCard.src} />
 
               <div className={Styles.text}>
-                <p className={Styles.fristText}>Net Salary Calculator</p>
+                <p className={Styles.fristText}>County Guide</p>
                 <p className={Styles.secondText}>
-                  Calculate and compare the net income of global employees
+                  Find information on payroll, labor conditions, statutory
+                  benefits, leave conditions, etc.
                 </p>
                 <p className={Styles.thirdText}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
