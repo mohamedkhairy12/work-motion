@@ -15,6 +15,7 @@ const SearchInput = () => {
 
   ////////////////////countries/////////////////////
 
+  // const [hhhhhhh, setHhhhhhh] = useState(false);
   const [showCountry, setShowCountry] = useState(false);
   const [countryValue, setCountryValue] = useState("");
   const [getValueCountry, setGetValueCountry] = useState("");
@@ -145,6 +146,8 @@ const SearchInput = () => {
     if (!e.target.value) setNewCountries([]);
   };
   const sendDaTa = async () => {
+    // setHhhhhhh(getValueCountry)
+
     try {
       await axios
         .get(
@@ -246,6 +249,7 @@ const SearchInput = () => {
         getRanges={getRanges}
         getValueCountry={getValueCountry}
         getValuejop={getValuejop}
+        // hhhhhhh={hhhhhhh}
       />
     </>
   );
