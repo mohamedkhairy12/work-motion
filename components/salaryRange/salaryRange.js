@@ -6,7 +6,7 @@ const salaryRange = (props) => {
   if (!props.getRanges) return <div/>;
   return (
     <>
-      {props.getRanges ? (
+      {props.getRanges && props.nameCountry && props.nameJop ? (
         <div className="container">
           <div className={Styles.ranges}>
             <p className={Styles.title}>

@@ -7,8 +7,8 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 const SearchInput = () => {
   const validationSchema = Yup.object({
-    name: Yup.string().required(),
-    counries: Yup.string().required(),
+    name: Yup.string().required("please select position"),
+    counries: Yup.string().required("please select country "),
     wouldRecommend: Yup.boolean().default(false),
   });
 
@@ -187,8 +187,9 @@ const SearchInput = () => {
 
         console.log(e);
       }
+      setGetValueCountry("");
+      setGetValuejop("");
     } else {
-
     }
   };
 
@@ -226,7 +227,7 @@ const SearchInput = () => {
                       <ErrorMessage
                         name="name"
                         render={(msg) => (
-                          <div style={{ color: "red", marginTop: "10px" }}>
+                          <div style={{ color: "#808080", marginTop: "10px" }}>
                             {msg}
                           </div>
                         )}
@@ -271,7 +272,7 @@ const SearchInput = () => {
                       <ErrorMessage
                         name="counries"
                         render={(msg) => (
-                          <div style={{ color: "red", marginTop: "10px" }}>
+                          <div style={{ color: "#808080", marginTop: "10px" }}>
                             {msg}
                           </div>
                         )}
