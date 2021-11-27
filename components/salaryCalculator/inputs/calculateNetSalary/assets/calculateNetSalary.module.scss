@@ -2,7 +2,7 @@
   width: 100%;
   margin-bottom: 32px;
   button {
-    font-family: "Work Sans";
+    // font-family: "Work Sans";
     font-weight: 600;
     font-size: 12px;
     line-height: 14px;
@@ -15,10 +15,67 @@
     padding: 12px;
     outline: none;
     border-color: #efeb6a;
+    outline: 0;
+    border: 1px solid #efeb6a;
+    cursor: pointer;
   }
 }
 .card {
   background: #fdfdec;
   border-radius: 8px;
   padding: 8px 16px 8px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    // border-bottom: 1px dotted black;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background: #e9e9d7;
+    border-radius: 8px;
+    color: #00234b;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    width: 326px;
+    height: 144px;
+    top: 22px;
+    left: 11px;
+    margin-left: -60px;
+    text-align: left;
+    padding-left: 11px;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 18%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #e9e9d7 transparent;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  .warningIcon {
+    position: relative;
+    bottom: 10px;
+  }
+  .vector {
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    left: 4px;
+  }
 }

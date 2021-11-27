@@ -1,9 +1,11 @@
 import React from "react";
 import Styles from "./assets/calculateNetSalary.module.scss";
-
+import Warning from './assets/complain.png'
+import Vector from './assets/vector.png'
 const calculateNetSalary = () => {
   return (
     <>
+
       <div className="col-12 col-md-12">
         <div className={Styles.btn}>
           <button type="submit" className="button is-primary">
@@ -11,9 +13,9 @@ const calculateNetSalary = () => {
           </button>
         </div>
       </div>
-      <div className="col-12 col-md-12">
+      <div className="col-12 col-sm-12">
         <div className={Styles.card}>
-          <div className="col-12 col-md-9">
+          <div >
             <p
               style={{
                 fontFamily: "Archivo",
@@ -27,7 +29,6 @@ const calculateNetSalary = () => {
             </p>
             <p
               style={{
-                fontFamily: "Work Sans",
                 fontSize: "12px",
                 lineHeight: "22px",
                 color: "#5A6487",
@@ -35,7 +36,21 @@ const calculateNetSalary = () => {
             >
               The calculation is estimated according to a persona and not every
               employee will fit this persona.
+              <div className={Styles.tooltip}>
+                <img src={Vector.src} className={Styles.vector} />
+                <span className={Styles.tooltiptext}>
+                Persona:
+                <br/>
+                  Single, no children, 35 years old, Non-religious, public insurance, healthcare/ etc.,
+                   works in tech, works at home, lives in the capital, resident, 
+                   no special tax reliefs other than tech related,
+                   mid-level (non manegerial/board), indefinite contract.</span>
+              </div>
+
             </p>
+          </div>
+          <div className={Styles.warningIcon}>
+            <img src={Warning.src} />
           </div>
         </div>
       </div>

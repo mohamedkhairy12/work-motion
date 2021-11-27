@@ -49,7 +49,12 @@ const grossInput = () => {
           Does this gross salary include allowances?{" "}
         </p>
       </div>
-      <div className="col-12 col-md-4"></div>
+      <div className="col-12 col-md-4">
+        <label className={Styles.switch}>
+          <input type="checkbox" />
+          <span className ={Styles.slider.round}></span>
+        </label>
+      </div>
     </>
   );
 };
