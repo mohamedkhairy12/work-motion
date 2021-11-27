@@ -12,6 +12,8 @@
       line-height: 16px;
       margin: 32px 0 12px 0;
       color: #064946;
+      @media (max-width: 768px) {
+        display: none;      }
     }
     .searchInput {
       input {
@@ -25,7 +27,7 @@
         padding-left: 17px;
       }
       @media (max-width: 768px) {
-        margin-bottom: 16px;
+        margin: 60px 0 16px 0;
       }
       .label {
         font-family: "Work Sans";
