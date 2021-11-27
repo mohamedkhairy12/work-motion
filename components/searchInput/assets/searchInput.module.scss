@@ -32,16 +32,34 @@
       @media (max-width: 768px) {
         margin-bottom: 16px;
       }
-    }
-    .cardSearch {
-      position: absolute;
-      top: 49px;
-      width: 91%;
-      background-color: #fff;
-      left: 35px;
+
+      .cardSearch {
+        position: absolute;
+        top: 49px;
+        width: 90%;
+        background-color: #fff;
+        left: 17px;
+        z-index: 1000;
+        height: 145px;
+        overflow-y: scroll;
+
+        .select {
+          padding: 10px;
+          list-style: none;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgb(243, 236, 236);
+          }
+        }
+      }
     }
     .btn {
       button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 2.7;
         cursor: pointer;
         font-family: "Archivo";
         font-style: normal;
