@@ -6,8 +6,7 @@ export default function Home() {
     <>
       <div className="container">
       <SearchInput />
-      <SalaryRange /> 
-      
+      <SalaryRange />
       <Card />
       </div>
     </>
