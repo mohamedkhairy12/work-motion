@@ -179,7 +179,7 @@ const SearchInput = () => {
   const sendDaTa = async () => {
 
     try {
-      if (countryID && jobID && nameJop && nameCountry) {
+      if (countryID && jobID ) {
         setNameCountry(getValueCountry);
         setNameJop(getValuejop);
         setGetRanges(null);

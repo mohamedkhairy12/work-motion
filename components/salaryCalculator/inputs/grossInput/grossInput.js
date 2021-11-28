@@ -55,7 +55,8 @@ const grossInput = () => {
       </div>
       <div className="col-12 col-md-4" >
         <label style={{ display: 'flex', alignItems: 'center', justifyContent:"end" }}>
-          <p style={{ marginRight: '8px' }}>No</p>  <Switch onChange={handleChange} checked={checked} uncheckedIcon={false} checkedIcon={false} /> <p style={{ marginLeft: '8px' }}>Yes</p>
+          <p style={{ marginRight: '8px' }}>No</p>  <Switch onChange={handleChange} 
+         className={Styles.switchBtn} checked={checked} uncheckedIcon={false} checkedIcon={false} /> <p style={{ marginLeft: '8px' }}>Yes</p>
         </label>
       </div>
     </>
