@@ -11,6 +11,8 @@
       line-height: 16px;
       margin: 32px 0 12px 0;
       color: #064946;
+      @media (max-width: 768px) {
+        display: none;      }
     }
     .searchInput {
       input {
