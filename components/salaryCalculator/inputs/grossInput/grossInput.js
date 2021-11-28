@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "./assets/grossInput.module.scss";
 import { Field, ErrorMessage } from "formik";
-
+import Switch from "react-switch";
 const grossInput = () => {
+  const [checked, setchecked] = useState(false);
+  const handleChange = (checked) => {
+    setchecked(checked);
+  }
   return (
     <>
       <div className="col-12 col-md-12">
@@ -49,10 +53,9 @@ const grossInput = () => {
           Does this gross salary include allowances?{" "}
         </p>
       </div>
-      <div className="col-12 col-md-4">
-        <label className={Styles.switch}>
-          <input type="checkbox" />
-          <span className ={Styles.slider.round}></span>
+      <div className="col-12 col-md-4" >
+        <label style={{ display: 'flex', alignItems: 'center', justifyContent:"end" }}>
+          <p style={{ marginRight: '8px' }}>No</p>  <Switch onChange={handleChange} checked={checked} uncheckedIcon={false} checkedIcon={false} /> <p style={{ marginLeft: '8px' }}>Yes</p>
         </label>
       </div>
     </>

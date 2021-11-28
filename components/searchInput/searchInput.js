@@ -35,6 +35,7 @@ const SearchInput = () => {
 
   const [nameCountry, setNameCountry] = useState("");
   const [showCountry, setShowCountry] = useState(false);
+  const [showRanges, setShowRanges] = useState(false);
   const [countryValue, setCountryValue] = useState("");
   const [getValueCountry, setGetValueCountry] = useState("");
   const [newCountries, setNewCountries] = useState("");
@@ -87,7 +88,7 @@ const SearchInput = () => {
         setallJobs(response.data.list);
         console.log(response.data.list);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   useEffect(() => {
@@ -99,6 +100,14 @@ const SearchInput = () => {
       setNewJops([]);
     }
   }, [getValuejop]);
+
+  const onChangeValueCountries = (e) => {
+    if (getValueCountry.length > e.target.value.length) {
+      setCountryID(null);
+    }
+    setGetValueCountry(e.target.value);
+    if (!e.target.value) setNewCountries([]);
+  };
 
   const onChangeValueJob = (e) => {
     if (getValuejop.length > e.target.value.length) {
@@ -135,7 +144,7 @@ const SearchInput = () => {
   }
   const getCountriesData = (e) => {
     setNewCountries([]);
-    console.log("GEHAD IS ::: ", e.target.firstChild.data);
+    // console.log("GEHAD IS ::: ", e.target.firstChild.data);
     setGetValueCountry(e.target.firstChild.data);
     setShowCountry(false)
   };
@@ -151,7 +160,7 @@ const SearchInput = () => {
       .then((response) => {
         setAllCountries(response.data.list);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   useEffect(() => {
@@ -163,16 +172,18 @@ const SearchInput = () => {
       setNewCountries([]);
     }
   }, [getValueCountry]);
-  const onChangeValueCountries = (e) => {
-    setGetValueCountry(e.target.value);
-    if (!e.target.value) setNewCountries([]);
-  };
+  // const onChangeValueCountries = (e) => {
+  //   setGetValueCountry(e.target.value);
+  //   if (!e.target.value) setNewCountries([]);
+  // };
   const sendDaTa = async () => {
-    if (countryID && jobID) {
-      setNameCountry(getValueCountry);
-      setNameJop(getValuejop);
-      setGetRanges(null);
-      try {
+
+    try {
+      if (countryID && jobID && nameJop && nameCountry) {
+        setNameCountry(getValueCountry);
+        setNameJop(getValuejop);
+        setGetRanges(null);
+        setShowRanges(true)
         await axios
           .get(
             `http://35.184.155.34/index.php/country/${countryID}/position/${jobID}/advanced`
@@ -181,16 +192,22 @@ const SearchInput = () => {
             setGetRanges(response.data);
             console.log(response.data.currency, "ressssssssss");
           });
-      } catch (e) {
-        // setErorr(e.response.status);
-        // document.getElementById("red").style.borderColor = "red";
-
-        console.log(e);
+        setGetValueCountry("");
+        setGetValuejop("");
+        return
+      } else {
+        setShowRanges(false)
+        return
       }
-      setGetValueCountry("");
-      setGetValuejop("");
-    } else {
+
+    } catch (e) {
+      // setErorr(e.response.status);
+      // document.getElementById("red").style.borderColor = "red";
+      setShowRanges(false)
+      console.log(e);
     }
+
+
   };
 
   const wrapperRef = useRef(null);
@@ -316,14 +333,14 @@ const SearchInput = () => {
         </div>
       </div>
       {/* <Input /> */}
-
+{showRanges == true ?
       <SalaryRange
         getRanges={getRanges}
         getValueCountry={getValueCountry}
         getValuejop={getValuejop}
         nameJop={nameJop}
         nameCountry={nameCountry}
-      />
+      /> : false}
     </>
   );
 };

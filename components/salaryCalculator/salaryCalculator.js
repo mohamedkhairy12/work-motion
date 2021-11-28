@@ -2,6 +2,7 @@ import React from "react";
 import SalaryTables from "./salaryTables/salaryTables";
 import Styles from "./assets/salaryCalculator.module.scss";
 import CountryInputOne from "./inputs/countryInputOne/countryInputOne";
+
 const SalaryCalculator = () => {
   return (
     <div className={Styles.main}>
