@@ -8,7 +8,7 @@ const Erorr = () => {
     setTimeout(() => {
       router.push("/");
     }, 3000);
-  }, []);
+  });
   return (
     <div className="container">
       <h1>page is not found</h1>

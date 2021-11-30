@@ -28,7 +28,7 @@ const SearchInput = () => {
   // const [erorr, setErorr] = useState("");
   // const [jopValue, setJopValue] = useState("");
   const [getValuejop, setGetValuejop] = useState("");
-  const [allJobs, setallJobs] = useState([]);
+  const [allJobs, setAllJobs] = useState([]);
   const [newjops, setNewJops] = useState("");
   const [getRanges, setGetRanges] = useState(null);
 
@@ -86,7 +86,7 @@ const SearchInput = () => {
     axios
       .get(`http://35.184.155.34/index.php/category_positions`)
       .then((response) => {
-        setallJobs(response.data.list);
+        setAllJobs(response.data.list);
         console.log(response.data.list);
       })
       .catch((error) => {});
@@ -100,7 +100,7 @@ const SearchInput = () => {
     } else {
       setNewJops([]);
     }
-  }, [getValuejop]);
+  }, [getValuejop,allJobs]);
 
   const onChangeValueCountries = (e) => {
     if (getValueCountry.length > e.target.value.length) {
@@ -172,7 +172,7 @@ const SearchInput = () => {
     } else {
       setNewCountries([]);
     }
-  }, [getValueCountry]);
+  }, [getValueCountry,allCountries]);
   // const onChangeValueCountries = (e) => {
   //   setGetValueCountry(e.target.value);
   //   if (!e.target.value) setNewCountries([]);
@@ -315,6 +315,7 @@ const SearchInput = () => {
                       <Image alt="Picture" width={13} height={12} src={Search.src} />
                     </span>
                     Find Salary
+                    
                   </button>
                 </div>
               </div>
