@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./assets/calculateNetSalary.module.scss";
 import Warning from "./assets/complain.png";
-import Vector from "./assets/vector.png";
+import Vector from "./assets/Vector.png";
 import Image from "next/image";
 
 const CalculateNetSalary = () => {
