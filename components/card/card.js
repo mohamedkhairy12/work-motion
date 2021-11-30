@@ -4,7 +4,7 @@ import ImageCard2 from "./assets/image/unsplash_JBwcenOuRCg.png";
 import Styles from "./assets/card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-const card = () => {
+const Card = () => {
   return (
     <div className="container">
       <h1 className={Styles.head}>Explore other features</h1>
@@ -71,4 +71,4 @@ const card = () => {
   );
 };
 
-export default card;
+export default Card;

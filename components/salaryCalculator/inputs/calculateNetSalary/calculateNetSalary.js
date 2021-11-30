@@ -4,7 +4,7 @@ import Warning from "./assets/complain.png";
 import Vector from "./assets/vector.png";
 import Image from "next/image";
 
-const calculateNetSalary = () => {
+const CalculateNetSalary = () => {
   return (
     <>
       <div className="container">
@@ -68,4 +68,4 @@ const calculateNetSalary = () => {
   );
 };
 
-export default calculateNetSalary;
+export default CalculateNetSalary;

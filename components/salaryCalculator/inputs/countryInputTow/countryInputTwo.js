@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from "./assets/countryInputTwo.module.scss";
 import {Field, ErrorMessage } from "formik";
-const countryInputTwo = () => {
+const CountryInputTwo = () => {
  
   return (
     <div className={Styles.searchInput}>
@@ -23,4 +23,4 @@ const countryInputTwo = () => {
   );
 };
 
-export default countryInputTwo;
+export default CountryInputTwo;

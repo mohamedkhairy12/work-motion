@@ -1,12 +1,12 @@
 import React from "react";
 import Styles from "./assets/footer.module.scss";
-import Logo from "./assets/wm-logo.png";
-import LinkedIn from "./assets/LinkedIn.png";
-import FaceBook from "./assets/FaceBook.png";
+import Logo from "./assets/Wm-logo.png";
+import LinkedIn from "./assets/linkedIn.png";
+import FaceBook from "./assets/facebook.png";
 import Twitter from "./assets/twitter.png";
 import Image from "next/image";
 
-const footer = () => {
+const Footer = () => {
   return (
     <div className={Styles.footer}>
       <div className={`container ${Styles.cont}`}>
@@ -88,4 +88,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;

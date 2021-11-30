@@ -12,7 +12,8 @@
       margin: 32px 0 12px 0;
       color: #064946;
       @media (max-width: 768px) {
-        display: none;      }
+        display: none;
+      }
     }
     .searchInput {
       input {
@@ -26,13 +27,16 @@
         padding-left: 17px;
       }
       @media (max-width: 768px) {
-        margin-bottom: 16px;
+        margin: 70px 0 16px 0;
       }
       .label {
         font-size: 14px;
         line-height: 16px;
         color: #064946;
         margin: 0 0 12px 0;
+        @media (max-width: 768px) {
+          margin: 20px 0 12px 0;
+        }
       }
     }
   }

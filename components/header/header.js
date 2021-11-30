@@ -4,11 +4,11 @@ import HeaderPhoto from "./assets/image/header.png";
 import HeaderRes from "./assets/image/headerRes.png";
 import Image from "next/image";
 
-const header = () => {
+const Header = () => {
   return (
     <div className={Styles.container}>
       <div className={Styles.img}>
-        <Image width={1360} height={350} src={HeaderPhoto.src} />
+        <Image width={1600} height={350} src={HeaderPhoto.src} />
       </div>
       {/* <img className={Styles.img} src={HeaderPhoto.src}/> */}
       <div className={Styles.imgRes}>
@@ -20,4 +20,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;

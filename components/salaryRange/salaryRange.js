@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Styles from "./assets/salaryRange.module.scss";
 
-const salaryRange = (props) => {
+const SalaryRange = (props) => {
   const [radio, setRadio] = useState("Annual");
   if (!props.getRanges) return <div/>;
   return (
@@ -134,4 +134,4 @@ const salaryRange = (props) => {
   );
 };
 
-export default salaryRange;
+export default SalaryRange;

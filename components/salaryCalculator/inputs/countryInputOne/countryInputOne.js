@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import CountryInputTwo from "../countryInputTow/countryInputTwo";
 import GrossInput from "../grossInput/grossInput";
 import CalculateNetSalary from "../calculateNetSalary/calculateNetSalary";
-const countryInputOne = () => {
+const CountryInputOne = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
     counries: Yup.string().required("please select country "),
@@ -69,4 +69,4 @@ const countryInputOne = () => {
   );
 };
 
-export default countryInputOne;
+export default CountryInputOne;

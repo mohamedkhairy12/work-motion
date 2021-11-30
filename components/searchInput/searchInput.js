@@ -312,7 +312,7 @@ const SearchInput = () => {
                   <button type="submit" className="button is-primary">
                     <span style={{ marginRight: "12px" }}>
                       {/* <img src={Search.src} /> */}
-                      <Image width={13} height={12}src={Search.src} />
+                      <Image width={13} height={12} src={Search.src} />
                     </span>
                     Find Salary
                   </button>
@@ -324,17 +324,14 @@ const SearchInput = () => {
       </div>
 
       {/* <Input /> */}
-      {showRanges == true ? (
-        <SalaryRange
-          getRanges={getRanges}
-          getValueCountry={getValueCountry}
-          getValuejop={getValuejop}
-          nameJop={nameJop}
-          nameCountry={nameCountry}
-        />
-      ) : (
-        false
-      )}
+
+      <SalaryRange
+        getRanges={getRanges}
+        getValueCountry={getValueCountry}
+        getValuejop={getValuejop}
+        nameJop={nameJop}
+        nameCountry={nameCountry}
+      />
     </>
   );
 };
