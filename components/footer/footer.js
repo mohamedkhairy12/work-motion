@@ -70,7 +70,7 @@ const Footer = () => {
           </div>
           <div className="col-12 col-sm-1">
             <p className={Styles.title}>Careers</p>
-            <p className={Styles.desc}>We're hiring</p>
+            <p className={Styles.desc}>We are hiring</p>
           </div>
         </div>
         <div className={`row ${Styles.rowTwo}`}>
