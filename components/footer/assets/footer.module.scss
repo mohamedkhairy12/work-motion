@@ -20,8 +20,10 @@
         top: 30%;
         .social {
             margin-top: 24px;
-            img {
-                margin-right: 24px;
+
+            .img {
+             margin-right: 24px !important;
+                
             }
         }
         p.address {

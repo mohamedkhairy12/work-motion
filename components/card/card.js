@@ -2,8 +2,8 @@ import React from "react";
 import ImageCard from "./assets/image/unsplash_Ay5VDmOaKBo.png";
 import ImageCard2 from "./assets/image/unsplash_JBwcenOuRCg.png";
 import Styles from "./assets/card.module.scss";
-import Link from 'next/link'
-
+import Link from "next/link";
+import Image from "next/image";
 const card = () => {
   return (
     <div className="container">
@@ -13,7 +13,12 @@ const card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img className={Styles.imag} src={ImageCard2.src} />
+              <Image
+                width={330}
+                height={360}
+                className={Styles.imag}
+                src={ImageCard2.src}
+              />
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>Net Salary Calculator</p>
@@ -25,9 +30,9 @@ const card = () => {
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
                 <Link href="/SalariesCalculator">
-                <div className={Styles.btn}>
-                  <button className={Styles.calc}>Calculate</button>
-                </div>
+                  <div className={Styles.btn}>
+                    <button className={Styles.calc}>Calculate</button>
+                  </div>
                 </Link>
               </div>
             </div>
@@ -36,7 +41,12 @@ const card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img className={Styles.imag} src={ImageCard.src} />
+              <Image
+                width={330}
+                height={360}
+                className={Styles.imag}
+                src={ImageCard.src}
+              />
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>County Guide</p>
