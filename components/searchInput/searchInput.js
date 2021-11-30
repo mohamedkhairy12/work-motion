@@ -95,7 +95,7 @@ const SearchInput = () => {
   useEffect(() => {
     if (getValuejop) {
       setNewJops(
-        allJobs?.filter((person) => person.positionName.includes(getValuejop))
+        allJobs?.filter((person) => person.positionName.toLowerCase().includes(getValuejop.toLowerCase()))
       );
     } else {
       setNewJops([]);
@@ -167,7 +167,7 @@ const SearchInput = () => {
   useEffect(() => {
     if (getValueCountry) {
       setNewCountries(
-        allCountries?.filter((person) => person.name.includes(getValueCountry))
+        allCountries?.filter((person) => person.name.toLowerCase().includes(getValueCountry.toLowerCase()))
       );
     } else {
       setNewCountries([]);
