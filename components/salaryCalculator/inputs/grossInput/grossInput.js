@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Styles from "./assets/grossInput.module.scss";
 import { Field, ErrorMessage } from "formik";
 import Switch from "react-switch";
-const grossInput = () => {
+const GrossInput = () => {
   const [checked, setchecked] = useState(false);
   const handleChange = (checked) => {
     setchecked(checked);
@@ -50,7 +50,7 @@ const grossInput = () => {
       </div>
       <div className="col-8 col-md-6">
         <p className={Styles.radioHeader}>
-          Does this gross salary include allowances?{" "}
+          Does this gross salary include allowances?
         </p>
       </div>
       <div className="col-4 col-md-6" >
@@ -63,4 +63,4 @@ const grossInput = () => {
   );
 };
 
-export default grossInput;
+export default GrossInput;

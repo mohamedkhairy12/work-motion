@@ -80,7 +80,7 @@ const SalaryRange = (props) => {
                     <div className={Styles.min}>
                       <p>10 % </p>
                       <p>
-                        {props?.getRanges?.currency}{" "}
+                        {props?.getRanges?.currency}
                         {radio === "Annual"
                           ? props?.getRanges?.quantiles?.q10
                           : Math.ceil(props?.getRanges?.quantiles?.q10 / 12)}
@@ -90,7 +90,7 @@ const SalaryRange = (props) => {
                     <div>
                       <p>MEDIAN</p>
                       <p>
-                        {props?.getRanges?.currency}{" "}
+                        {props?.getRanges?.currency}
                         {radio === "Annual"
                           ? props?.getRanges?.quantiles?.average
                           : Math.ceil(
@@ -102,11 +102,11 @@ const SalaryRange = (props) => {
                     <div className={Styles.max}>
                       <p>90 %</p>
                       <p>
-                        {props.getRanges.currency}{" "}
+                        {props.getRanges.currency}
                         {radio === "Annual"
                           ? props?.getRanges?.quantiles?.q90
                           : Math.ceil(props?.getRanges?.quantiles.q90 / 12)}
-                        K{" "}
+                        K
                       </p>
                     </div>
                   </div>
@@ -118,7 +118,7 @@ const SalaryRange = (props) => {
                       ? props.getRanges?.quantiles?.average
                       : Math.ceil(
                           props.getRanges?.quantiles?.average / 12
-                        )}{" "}
+                        )}
                     {props.getRanges?.currency}
                   </p>
                   <p className={Styles.avg}>Average base salary</p>
