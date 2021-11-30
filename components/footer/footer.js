@@ -13,13 +13,13 @@ const Footer = () => {
         <div className="row">
           <div className="col-12 col-sm-3">
             {/* <img src={Logo.src} /> */}
-            <Image width={170} height={37} src={Logo.src} />
+            <Image alt="Picture" width={170} height={37} src={Logo.src} />
 
             <div className={Styles.social}>
               {/* <img src={LinkedIn.src} /> */}
               <span className={Styles.img}>
               <Image
-                
+                alt="Picture"
                 width={26}
                 height={25}
                 src={LinkedIn.src}
@@ -28,7 +28,7 @@ const Footer = () => {
               <span className={Styles.img}>
                 {/* <img src={Twitter.src} /> */}
                 <Image
-                  
+                  alt="Picture"
                   style="margin:40px"
                   width={26}
                   height={25}
@@ -38,7 +38,7 @@ const Footer = () => {
 
               <span>
                 {/* <img src={FaceBook.src} /> */}
-                <Image width={26} height={25} src={FaceBook.src} />
+                <Image alt="Picture" width={26} height={25} src={FaceBook.src} />
               </span>
             </div>
             <p className={Styles.address}>

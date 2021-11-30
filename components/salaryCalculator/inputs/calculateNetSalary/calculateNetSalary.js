@@ -42,7 +42,7 @@ const CalculateNetSalary = () => {
                   <div className={Styles.tooltip}>
                     <span className={Styles.vector}>
                       {/* <img src={Vector.src} className={Styles.vector}/> */}
-                      <Image width={20} height={20} src={Vector.src} className={Styles.vector}/>
+                      <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector}/>
                     </span>
                     {/* <span className={Styles.tooltiptext}>
                       Persona:
@@ -58,7 +58,7 @@ const CalculateNetSalary = () => {
               </div>
               <div className={Styles.warningIcon}>
                 {/* <img src={Warning.src} /> */}
-                <Image width={50} height={48} src={Warning.src} />
+                <Image alt="Picture" width={50} height={48} src={Warning.src} />
               </div>
             </div>
           </div>

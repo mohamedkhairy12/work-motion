@@ -14,6 +14,7 @@ const Card = () => {
           <div className={Styles.contant}>
             <div className={Styles.details}>
               <Image
+                alt="Picture"
                 width={330}
                 height={360}
                 className={Styles.imag}
@@ -42,6 +43,7 @@ const Card = () => {
           <div className={Styles.contant}>
             <div className={Styles.details}>
               <Image
+              alt="Picture"
                 width={330}
                 height={360}
                 className={Styles.imag}
