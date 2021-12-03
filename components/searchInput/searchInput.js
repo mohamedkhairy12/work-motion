@@ -186,7 +186,7 @@ const SearchInput = () => {
         setShowRanges(true);
         await axios
           .get(
-            `http://34.68.200.24/index.php/country/${countryID}/position/${jobID}/advanced`
+            `http://35.184.155.34/index.php/country/${countryID}/position/${jobID}/advanced`
           )
           .then((response) => {
             setGetRanges(response.data);

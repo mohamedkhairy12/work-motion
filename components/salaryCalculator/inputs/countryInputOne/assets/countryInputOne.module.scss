@@ -39,5 +39,26 @@
         }
       }
     }
+    .cardSearch {
+      position: absolute;
+      top: 49px;
+      width: 90%;
+      background-color: #fff;
+      left: 17px;
+      z-index: 1000;
+      padding-left: 0px;
+      height: 145px;
+      overflow-y: scroll;
+
+      .select {
+        padding: 10px;
+        list-style: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e9f4f3;
+        }
+      }
+    }
   }
 }
