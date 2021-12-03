@@ -84,7 +84,7 @@ const SearchInput = () => {
   };
   useEffect(() => {
     axios
-      .get(`http://35.184.155.34/index.php/category_positions`)
+      .get(`http://34.68.200.24/index.php/category_positions`)
       .then((response) => {
         setAllJobs(response.data.list);
         console.log(response.data.list);
@@ -157,7 +157,7 @@ const SearchInput = () => {
 
   useEffect(() => {
     axios
-      .get(`http://35.184.155.34/index.php/countries`)
+      .get(`http://34.68.200.24/index.php/countries`)
       .then((response) => {
         setAllCountries(response.data.list);
       })
@@ -186,7 +186,7 @@ const SearchInput = () => {
         setShowRanges(true);
         await axios
           .get(
-            `http://35.184.155.34/index.php/country/${countryID}/position/${jobID}/advanced`
+            `http://34.68.200.24/index.php/country/${countryID}/position/${jobID}/advanced`
           )
           .then((response) => {
             setGetRanges(response.data);
