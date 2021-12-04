@@ -4,7 +4,7 @@ import Styles from "./assets/salaryCalculator.module.scss";
 import CountryInputOne from "./inputs/countryInputOne/countryInputOne";
 
 const SalaryCalculator = () => {
-  const[tableOne, setTableOne] = useState("")
+  const [tableOne, setTableOne] = useState()
   return (
     <div className={Styles.main}>
       <div className="container">
@@ -19,18 +19,20 @@ const SalaryCalculator = () => {
                 make up your decision easily.
               </p>
             </div>
-            <CountryInputOne 
-           setTableOne={setTableOne}
-           tableOne={tableOne}
+            <CountryInputOne
+              setTableOne={setTableOne}
+              tableOne={tableOne}
             />
 
           </div>
 
           <div className="col-12 col-sm-6">
-            <SalaryTables 
-            setTableOne={setTableOne}
-            tableOne={tableOne}
-            />
+            {tableOne &&
+              <SalaryTables
+                setTableOne={setTableOne}
+                tableOne={tableOne}
+              />
+            }
           </div>
         </div>
       </div>

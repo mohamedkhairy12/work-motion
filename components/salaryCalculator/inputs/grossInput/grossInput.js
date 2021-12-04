@@ -58,13 +58,14 @@ const GrossInput = (props) => {
             )}
           </select>
         </div>
+        <p>{props.errors.currency}</p>
       </div>
-      <div className="col-8 col-md-6">
+      <div className="col-8 col-md-8">
         <p className={Styles.radioHeader}>
           Does this gross salary include allowances?
         </p>
       </div>
-      <div className="col-4 col-md-6" >
+      <div className="col-4 col-md-4" >
         <label style={{ display: 'flex', alignItems: 'center', justifyContent: "end" }}>
           <p style={{ marginRight: '8px' }}>No</p>  <Switch onChange={handleChange}
             className={Styles.switchBtn} checked={props.checked} uncheckedIcon={false} checkedIcon={false} /> <p style={{ marginLeft: '8px' }}>Yes</p>

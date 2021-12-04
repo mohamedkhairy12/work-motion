@@ -18,11 +18,11 @@ const CalculateNetSalary = (props) => {
         
       })
         .then((response) => {
-          props.setTableOne(response.data.gross.main_value)  
+          props.setTableOne(response.data)  
           console.log(response.data, "poosstt")
         })
-    } catch (e) {
-      console.log(e,"errorr")
+    } catch (error) {
+      props.setErrors(error.response.data)
     }
   }
   return (
@@ -35,7 +35,6 @@ const CalculateNetSalary = (props) => {
                 calculate Net Salary
               </button>
             </div>
-            {props.tableOne}
           </div>
           
           <div className="col-12 col-sm-12">

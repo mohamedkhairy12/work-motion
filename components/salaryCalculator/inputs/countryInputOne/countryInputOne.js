@@ -131,7 +131,7 @@ const CountryInputOne = (props) => {
   const [grossSalary, setGrossSalary] = useState('')
   const [checked, setchecked] = useState(false);
   // const[tableOne, setTableOne] = useState("")
-
+  const [errors, setErrors] = useState('')
   //////////////// End CURRENCY TYPE////////////////////
 
   return (
@@ -161,14 +161,7 @@ const CountryInputOne = (props) => {
                     placeholder="Select Country 1"
                     onInput={onChangeValueCountryOne}
                   />
-                  <ErrorMessage
-                    name="name"
-                    render={(msg) => (
-                      <div style={{ color: "#808080", marginTop: "10px" }}>
-                        {msg}
-                      </div>
-                    )}
-                  />
+                  <p>{errors.first_country}</p>
                   <div ref={wrapperRef}>
                     {getValueCountryOne && showMenuCountryOne ? (
                       <ul
@@ -200,6 +193,8 @@ const CountryInputOne = (props) => {
                   getValueCountryTwo={getValueCountryTwo}
                   showMenuCountryTwo={showMenuCountryTwo}
                   setShowMenuCountryTwo={setShowMenuCountryTwo}
+                  errors={errors}
+                  setErrors={setErrors}
                 />
               </div>
 
@@ -211,6 +206,8 @@ const CountryInputOne = (props) => {
                 setGrossSalary={setGrossSalary}
                 setchecked={setchecked}
                 checked={checked}
+                errors={errors}
+                setErrors={setErrors}
               />
               <CalculateNetSalary
                 getValueCountryOne={getValueCountryOne}
@@ -223,6 +220,8 @@ const CountryInputOne = (props) => {
                 checked={checked}
                 setTableOne={props.setTableOne}
                 tableOne={props.tableOne}
+                errors={errors}
+                setErrors={setErrors}
               />
             </div>
           </Form>

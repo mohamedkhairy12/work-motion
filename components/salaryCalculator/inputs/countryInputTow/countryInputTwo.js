@@ -68,12 +68,13 @@ const CountryInputTwo = (props) => {
         onInput={onChangeValueCountryTwo}
         placeholder="Select Country 2"
       />
-      <ErrorMessage
+      <p>{props.errors.second_country}</p>
+      {/* <ErrorMessage
         name="countryTwo"
         render={(msg) => (
           <div style={{ color: "#808080", marginTop: "10px" }}>{msg}</div>
         )}
-      />
+      /> */}
       <div ref={wrapperRef}>
         {props.getValueCountryTwo && props.showMenuCountryTwo ? (
           <ul className={Styles.cardSearch} onClick={getCountryTwoData}>
