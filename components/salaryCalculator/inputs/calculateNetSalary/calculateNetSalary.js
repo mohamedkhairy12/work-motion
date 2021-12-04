@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./assets/calculateNetSalary.module.scss";
 import Warning from "./assets/complain.png";
 import Vector from "./assets/Vector.png";
@@ -6,6 +6,7 @@ import Image from "next/image";
 import axios from "axios";
 
 const CalculateNetSalary = (props) => {
+  
   const calculateDaTa = async () => {
     try {
      await axios.post('http://34.68.200.24/index.php/calculate_it', {
@@ -17,8 +18,8 @@ const CalculateNetSalary = (props) => {
         
       })
         .then((response) => {
-          props.setTableOne(response.data.gross.main_valu)  
-          console.log(response.data.gross.main_value, "poosstt")
+          props.setTableOne(response.data.gross.main_value)  
+          console.log(response.data, "poosstt")
         })
     } catch (e) {
       console.log(e,"errorr")
@@ -34,7 +35,7 @@ const CalculateNetSalary = (props) => {
                 calculate Net Salary
               </button>
             </div>
-            
+            {props.tableOne}
           </div>
           
           <div className="col-12 col-sm-12">
