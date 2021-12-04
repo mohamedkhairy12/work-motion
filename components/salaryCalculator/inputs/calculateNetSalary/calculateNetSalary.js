@@ -1,21 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Styles from "./assets/calculateNetSalary.module.scss";
 import Warning from "./assets/complain.png";
 import Vector from "./assets/Vector.png";
 import Image from "next/image";
+import axios from "axios";
 
-const CalculateNetSalary = () => {
+const CalculateNetSalary = (props) => {
+  const calculateDaTa = async () => {
+    try {
+     await axios.post('http://34.68.200.24/index.php/calculate_it', {
+          "first_country": props.getValueCountryOne,
+          "second_country": props.getValueCountryTwo,
+          "currency": props.catchSelectVal,
+          "value": props.grossSalary,
+          "allow": props.checked
+        
+      })
+        .then((response) => {
+          props.setTableOne(response.data.gross.main_valu)  
+          console.log(response.data.gross.main_value, "poosstt")
+        })
+    } catch (e) {
+      console.log(e,"errorr")
+    }
+  }
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-12">
             <div className={Styles.btn}>
-              <button type="submit" className="button is-primary">
+              <button type="submit" className="button is-primary" onClick={calculateDaTa}>
                 calculate Net Salary
               </button>
             </div>
+            
           </div>
+          
           <div className="col-12 col-sm-12">
             <div className={Styles.card}>
               <div>
@@ -42,9 +63,9 @@ const CalculateNetSalary = () => {
                   <div className={Styles.tooltip}>
                     <span className={Styles.vector}>
                       {/* <img src={Vector.src} className={Styles.vector}/> */}
-                      <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector}/>
+                      <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector} />
                     </span>
-                    {/* <span className={Styles.tooltiptext}>
+                    <span className={Styles.tooltiptext}>
                       Persona:
                       <br />
                       Single, no children, 35 years old, Non-religious, public
@@ -52,7 +73,7 @@ const CalculateNetSalary = () => {
                       lives in the capital, resident, no special tax reliefs
                       other than tech related, mid-level (non manegerial/board),
                       indefinite contract.
-                    </span> */}
+                    </span>
                   </div>
                 </p>
               </div>

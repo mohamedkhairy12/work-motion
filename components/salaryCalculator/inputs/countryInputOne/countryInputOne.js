@@ -6,7 +6,7 @@ import CountryInputTwo from "../countryInputTow/countryInputTwo";
 import GrossInput from "../grossInput/grossInput";
 import CalculateNetSalary from "../calculateNetSalary/calculateNetSalary";
 import axios from "axios";
-const CountryInputOne = () => {
+const CountryInputOne = (props) => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
     counries: Yup.string().required("please select country "),
@@ -21,22 +21,22 @@ const CountryInputOne = () => {
     wouldRecommend: false,
   };
 
+
   const onSubmit = (values) => {
     console.log(JSON.stringify(values, null, 2));
   };
   ////////////////////////////////////////////// countryOne /////////////////////////////////////////////
   const [showMenuCountryOne, setShowMenuCountryOne] = useState(false);
-  const [nameJop, setNameJop] = useState("");
   const [getValueCountryOne, setGetValueCountryOne] = useState("");
   const [allCountryOne, setAllCountryOne] = useState([]);
   const [allCountryTwo, setAllCountryTwo] = useState([]);
   const [newCountryOne, setNewCountryOne] = useState("");
-  const [getRanges, setGetRanges] = useState(null);
-  const [jobID, setJobID] = useState(null);
 
   const handleOpencountryOne = () => {
     setShowMenuCountryOne(true);
   };
+
+
   function useOutsideAlerter(ref) {
     useEffect(() => {
       /**
@@ -79,7 +79,7 @@ const CountryInputOne = () => {
         setAllCountryTwo(response.data.data);
         console.log(response.data.data);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   useEffect(() => {
@@ -103,6 +103,13 @@ const CountryInputOne = () => {
     setGetValueCountryOne(e.target.value);
     if (!e.target.value) setNewCountryOne([]);
   };
+  const onChangeGrossValue = (e) => {
+    if (grossSalary.length > e.target.value.length) {
+      // setJobID(null);
+    }
+    setGrossSalary(e.target.value);
+    if (!e.target.value) setGrossSalary('');
+  }
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
@@ -118,6 +125,14 @@ const CountryInputOne = () => {
   };
 
 
+  ////////////////START CURRENCY TYPE////////////////////
+  const [currency, setCurrency] = useState([])
+  const [catchSelectVal, setCatchSelectVal] = useState('')
+  const [grossSalary, setGrossSalary] = useState('')
+  const [checked, setchecked] = useState(false);
+  // const[tableOne, setTableOne] = useState("")
+
+  //////////////// End CURRENCY TYPE////////////////////
 
   return (
     <div className={Styles.cont}>
@@ -143,7 +158,7 @@ const CountryInputOne = () => {
                     id="red"
                     type="text"
                     value={getValueCountryOne}
-                    placeholder="Spain"
+                    placeholder="Select Country 1"
                     onInput={onChangeValueCountryOne}
                   />
                   <ErrorMessage
@@ -187,8 +202,28 @@ const CountryInputOne = () => {
                   setShowMenuCountryTwo={setShowMenuCountryTwo}
                 />
               </div>
-              <GrossInput />
-              <CalculateNetSalary />
+
+              <GrossInput
+                setCurrency={setCurrency}
+                currency={currency}
+                setCatchSelectVal={setCatchSelectVal}
+                catchSelectVal={catchSelectVal}
+                setGrossSalary={setGrossSalary}
+                setchecked={setchecked}
+                checked={checked}
+              />
+              <CalculateNetSalary
+                getValueCountryOne={getValueCountryOne}
+                getValueCountryTwo={getValueCountryTwo}
+                setCatchSelectVal={setCatchSelectVal}
+                catchSelectVal={catchSelectVal}
+                setGrossSalary={setGrossSalary}
+                grossSalary={grossSalary}
+                setchecked={setchecked}
+                checked={checked}
+                setTableOne={props.setTableOne}
+                tableOne={props.tableOne}
+              />
             </div>
           </Form>
         </Formik>

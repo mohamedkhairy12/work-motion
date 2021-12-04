@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import SalaryTables from "./salaryTables/salaryTables";
 import Styles from "./assets/salaryCalculator.module.scss";
 import CountryInputOne from "./inputs/countryInputOne/countryInputOne";
 
 const SalaryCalculator = () => {
+  const[tableOne, setTableOne] = useState("")
   return (
     <div className={Styles.main}>
       <div className="container">
@@ -18,12 +19,18 @@ const SalaryCalculator = () => {
                 make up your decision easily.
               </p>
             </div>
-            <CountryInputOne />
+            <CountryInputOne 
+           setTableOne={setTableOne}
+           tableOne={tableOne}
+            />
 
           </div>
 
           <div className="col-12 col-sm-6">
-            <SalaryTables />
+            <SalaryTables 
+            setTableOne={setTableOne}
+            tableOne={tableOne}
+            />
           </div>
         </div>
       </div>

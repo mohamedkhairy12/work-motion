@@ -66,7 +66,7 @@ const CountryInputTwo = (props) => {
         value={props.getValueCountryTwo}
         type="text"
         onInput={onChangeValueCountryTwo}
-        placeholder="United Kingdom"
+        placeholder="Select Country 2"
       />
       <ErrorMessage
         name="countryTwo"

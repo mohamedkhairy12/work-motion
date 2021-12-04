@@ -1,6 +1,7 @@
 import React from "react";
 import Styles from "./assets/salaryTables.module.scss";
-const SalaryTables = () => {
+const SalaryTables = (props) => {
+  console.log(props,"proopp")
   return (
     <div className={Styles.tables}>
       <p>Gross salary amount in talents’ local currency</p>
@@ -12,7 +13,7 @@ const SalaryTables = () => {
             <th>United Kingdom</th>
           </tr>
           <tr>
-            <td>80,000 USD</td>
+            <td>{props.tableOne}</td>
             <td>69,741 EUR</td>
             <td>59,660 GBP</td>
           </tr>
