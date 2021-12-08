@@ -53,6 +53,8 @@ const GrossInput = (props) => {
       <div className="col-12 col-md-4">
         <div className={Styles.searchInput}>
           <select name="currency" id="currency" onInput={selectValue} className={Styles.cur}>
+          <option>Select Currency</option>
+
             {props.currency.map((curr) =>
               <option value={curr.name} >{curr.name}</option>
             )}
