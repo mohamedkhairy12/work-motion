@@ -3,25 +3,25 @@ import Styles from "./assets/grossInput.module.scss";
 import { Field, ErrorMessage } from "formik";
 import Switch from "react-switch";
 import axios from "axios";
-const GrossInput = (props) => {
+const GrossInput = ({setchecked,setCurrency,setCatchSelectVal,setGrossSalary,currency,errors,checked}) => {
   const handleChange = (checked) => {
-    props.setchecked(checked);
+    setchecked(checked);
   }
 
   useEffect(() => {
     axios.get('http://34.68.200.24/index.php/main_currency')
       .then((response) => {
-        props.setCurrency(response.data.data)
+        setCurrency(response.data.data)
         console.log(response.data.data, "jdkskjhds")
       })
-  }, []);
+  }, [setCurrency]);
 
   const selectValue = (e) => {
-    props.setCatchSelectVal(e.target.value)
+    setCatchSelectVal(e.target.value)
     // console.log(e.target.value, "eventt")
   }
   const setGrossSal = (e) => {
-    props.setGrossSalary(e.target.value)
+    setGrossSalary(e.target.value)
     console.log(e.target.value, "eventt")
   }
 
@@ -36,14 +36,14 @@ const GrossInput = (props) => {
         <div className={Styles.searchInput}>
           <Field
             autoComplete="off"
-            name="counries"
+            name="grossSalary"
             id="red"
             type="number"
             onInput={setGrossSal}
             placeholder="ex:8000"
           />
           <ErrorMessage
-            name="counries"
+            name="grossSalary"
             render={(msg) => (
               <div style={{ color: "#808080", marginTop: "10px" }}>{msg}</div>
             )}
@@ -55,12 +55,12 @@ const GrossInput = (props) => {
           <select name="currency" id="currency" onInput={selectValue} className={Styles.cur}>
           <option>Select Currency</option>
 
-            {props.currency.map((curr) =>
-              <option value={curr.name} >{curr.name}</option>
+            {currency.map((curr) =>
+              <option value={curr.name} key={curr.id}>{curr.name}</option>
             )}
           </select>
         </div>
-        <p>{props.errors.currency}</p>
+        <p>{errors.currency}</p>
       </div>
       <div className="col-8 col-md-8">
         <p className={Styles.radioHeader}>
@@ -70,7 +70,7 @@ const GrossInput = (props) => {
       <div className="col-4 col-md-4" >
         <label style={{ display: 'flex', alignItems: 'center', justifyContent: "end" }}>
           <p style={{ marginRight: '8px' }}>No</p>  <Switch onChange={handleChange}
-            className={Styles.switchBtn} checked={props.checked} uncheckedIcon={false} checkedIcon={false} /> <p style={{ marginLeft: '8px' }}>Yes</p>
+            className={Styles.switchBtn} checked={checked} uncheckedIcon={false} checkedIcon={false} /> <p style={{ marginLeft: '8px' }}>Yes</p>
         </label>
       </div>
     </>

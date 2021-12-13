@@ -10,6 +10,7 @@ const CountryInputOne = (props) => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
     counries: Yup.string().required("please select country "),
+    grossSalary: Yup.string().required("please select gross"),
     countryTwo: Yup.string().required("please select country Two "),
     wouldRecommend: Yup.boolean().default(false),
   });
@@ -17,6 +18,7 @@ const CountryInputOne = (props) => {
   const initialValues = {
     name: "",
     counries: "",
+    grossSalary:"",
     countryTwo: "",
     wouldRecommend: false,
   };

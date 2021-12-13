@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Styles from "./assets/countryInputTwo.module.scss";
 import { Field, ErrorMessage } from "formik";
-const CountryInputTwo = (props) => {
+const CountryInputTwo = ({getValueCountryTwo,allCountryTwo,newCountryTwo,setNewCountryTwo,errors,showMenuCountryTwo,setShowMenuCountryTwo,setGetValueCountryTwo}) => {
 
 
   function useOutsideAlerter(ref) {
@@ -13,8 +13,8 @@ const CountryInputTwo = (props) => {
         if (ref.current && !ref.current.contains(event.target)) {
           // alert("You clicked outside of me!");
 
-          props.setNewCountryTwo([]);
-          props.setShowMenuCountryTwo(false);
+          setNewCountryTwo([]);
+          setShowMenuCountryTwo(false);
         }
       }
 
@@ -28,31 +28,31 @@ const CountryInputTwo = (props) => {
   }
 
   const getCountryTwoData = (e) => {
-   props.setNewCountryTwo([]);
+   setNewCountryTwo([]);
     console.log("GEHAD IS ::: ", e.target.firstChild.data);
-    props.setGetValueCountryTwo(e.target.firstChild.data);
-    props.setShowMenuCountryTwo(false);
+    setGetValueCountryTwo(e.target.firstChild.data);
+    setShowMenuCountryTwo(false);
   };
 
   useEffect(() => {
-    if (props.getValueCountryTwo) {
-      props.setNewCountryTwo(
-        props.allCountryTwo?.filter((person) =>
+    if (getValueCountryTwo) {
+      setNewCountryTwo(
+      allCountryTwo?.filter((person) =>
           person.name
             .toLowerCase()
-            .includes(props.getValueCountryTwo.toLowerCase())
+            .includes(getValueCountryTwo.toLowerCase())
         )
       );
     } else {
-      props.setNewCountryTwo([]);
+      setNewCountryTwo([]);
     }
-  }, [props.getValueCountryTwo, props.allCountryTwo]);
+  }, [getValueCountryTwo,allCountryTwo,setNewCountryTwo]);
   const onChangeValueCountryTwo = (e) => {
-    if (props.getValueCountryTwo.length > e.target.value.length) {
+    if (getValueCountryTwo.length > e.target.value.length) {
       // setJobID(null);
     }
-    props.setGetValueCountryTwo(e.target.value);
-    if (!e.target.value) props.setNewCountryTwo([]);
+    setGetValueCountryTwo(e.target.value);
+    if (!e.target.value) setNewCountryTwo([]);
   };
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
@@ -63,12 +63,12 @@ const CountryInputTwo = (props) => {
         autoComplete="off"
         name="countryTwo"
         id="red"
-        value={props.getValueCountryTwo}
+        value={getValueCountryTwo}
         type="text"
         onInput={onChangeValueCountryTwo}
         placeholder="Select Country 2"
       />
-      <p>{props.errors.second_country}</p>
+      <p>{errors.second_country}</p>
       {/* <ErrorMessage
         name="countryTwo"
         render={(msg) => (
@@ -76,10 +76,10 @@ const CountryInputTwo = (props) => {
         )}
       /> */}
       <div ref={wrapperRef}>
-        {props.getValueCountryTwo && props.showMenuCountryTwo ? (
+        {getValueCountryTwo && showMenuCountryTwo ? (
           <ul className={Styles.cardSearch} onClick={getCountryTwoData}>
-            {props.newCountryTwo &&
-              props.newCountryTwo?.map((post) => (
+            {newCountryTwo &&
+             newCountryTwo?.map((post) => (
                 <li
                   className={Styles.select}
                   key={post.name}
