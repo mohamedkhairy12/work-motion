@@ -65,15 +65,15 @@ const CalculateNetSalary = (props) => {
                       {/* <img src={Vector.src} className={Styles.vector}/> */}
                       <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector} />
                     </span>
-                    <span className={Styles.tooltiptext}>
+                    {/* <span className={Styles.tooltiptext}>
                       Persona:
                       <br />
                       Single, no children, 35 years old, Non-religious, public
                       insurance, healthcare/ etc., works in tech, works at home,
                       lives in the capital, resident, no special tax reliefs
                       other than tech related, mid-level (non manegerial/board),
-                      indefinite contract.
-                    </span>
+                      indefinite contract.ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                    </span> */}
                   </div>
                 </p>
               </div>

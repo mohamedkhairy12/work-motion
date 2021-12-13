@@ -51,12 +51,12 @@ const GrossInput = ({setchecked,setCurrency,setCatchSelectVal,setGrossSalary,cur
         </div>
       </div>
       <div className="col-12 col-md-4">
-        <div className={Styles.searchInput}>
+        <div className={Styles.searchInput2}>
           <select name="currency" id="currency" onInput={selectValue} className={Styles.cur}>
-          <option>Select Currency</option>
+          <option className={Styles.options}>Select Currency</option>
 
             {currency.map((curr) =>
-              <option value={curr.name} key={curr.id}>{curr.name}</option>
+              <option className={Styles.options} value={curr.name} key={curr.id}>{curr.name}</option>
             )}
           </select>
         </div>
