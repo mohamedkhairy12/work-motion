@@ -13,12 +13,9 @@ const Card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <Image
+              <img src={ImageCard2.src}
                 alt="Picture"
-                width={330}
-                height={360}
                 className={Styles.imag}
-                src={ImageCard2.src}
               />
 
               <div className={Styles.text}>
@@ -42,12 +39,11 @@ const Card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <Image
+              <img src={ImageCard.src}
               alt="Picture"
-                width={330}
-                height={360}
+                
                 className={Styles.imag}
-                src={ImageCard.src}
+                
               />
 
               <div className={Styles.text}>

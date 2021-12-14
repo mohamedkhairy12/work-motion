@@ -312,7 +312,7 @@ const SearchInput = () => {
                   <button type="submit" className="button is-primary">
                     <span style={{ marginRight: "12px" }}>
                       {/* <img src={Search.src} /> */}
-                      <Image alt="Picture" width={13} height={12} src={Search.src} />
+                      <img alt="Picture" src={Search.src} />
                     </span>
                     Find Salary
                     
