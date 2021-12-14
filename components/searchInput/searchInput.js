@@ -5,7 +5,7 @@ import SalaryRange from "../salaryRange/salaryRange";
 import axios from "axios";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import Image from "next/image";
+// import Image from "next/image";
 const SearchInput = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
@@ -312,7 +312,7 @@ const SearchInput = () => {
                   <button type="submit" className="button is-primary">
                     <span style={{ marginRight: "12px" }}>
                       {/* <img src={Search.src} /> */}
-                      <img alt="Picture" src={Search.src} />
+                      {/* <Image alt="Picture" width={13} height={12} src={Search.src} /> */}
                     </span>
                     Find Salary
                     

@@ -3,7 +3,7 @@ import ImageCard from "./assets/image/unsplash_Ay5VDmOaKBo.png";
 import ImageCard2 from "./assets/image/unsplash_JBwcenOuRCg.png";
 import Styles from "./assets/card.module.scss";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 const Card = () => {
   return (
     <div className="container">
@@ -13,10 +13,13 @@ const Card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img src={ImageCard2.src}
+              {/* <Image
                 alt="Picture"
+                width={330}
+                height={360}
                 className={Styles.imag}
-              />
+                src={ImageCard2.src}
+              /> */}
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>Net Salary Calculator</p>
@@ -39,12 +42,13 @@ const Card = () => {
         <div className="col-12 col-sm-6">
           <div className={Styles.contant}>
             <div className={Styles.details}>
-              <img src={ImageCard.src}
+              {/* <Image
               alt="Picture"
-                
+                width={330}
+                height={360}
                 className={Styles.imag}
-                
-              />
+                src={ImageCard.src}
+              /> */}
 
               <div className={Styles.text}>
                 <p className={Styles.fristText}>County Guide</p>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Styles from "./assets/calculateNetSalary.module.scss";
 import Warning from "./assets/complain.png";
 import Vector from "./assets/Vector.png";
-import Image from "next/image";
+// import Image from "next/image";
 import axios from "axios";
 
 const CalculateNetSalary = (props) => {
@@ -63,7 +63,7 @@ const CalculateNetSalary = (props) => {
                   <div className={Styles.tooltip}>
                     <span className={Styles.vector}>
                       {/* <img src={Vector.src} className={Styles.vector}/> */}
-                      <img alt="Picture"src={Vector.src} className={Styles.vector} />
+                      {/* <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector} /> */}
                     </span>
                     {/* <span className={Styles.tooltiptext}>
                       Persona:
@@ -79,7 +79,7 @@ const CalculateNetSalary = (props) => {
               </div>
               <div className={Styles.warningIcon}>
                 {/* <img src={Warning.src} /> */}
-                <img alt="Picture"  src={Warning.src} />
+                {/* <Image alt="Picture" width={50} height={48} src={Warning.src} /> */}
               </div>
             </div>
           </div>
