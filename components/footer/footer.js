@@ -4,7 +4,7 @@ import Logo from "./assets/Wm-logo.png";
 import LinkedIn from "./assets/linkedIn.png";
 import FaceBook from "./assets/facebook.png";
 import Twitter from "./assets/twitter.png";
-// import Image from "next/image";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -13,32 +13,32 @@ const Footer = () => {
         <div className="row">
           <div className="col-12 col-sm-3">
             {/* <img src={Logo.src} /> */}
-            {/* <Image alt="Picture" width={170} height={37} src={Logo.src} /> */}
+            <Image alt="Picture" width={170} height={37} src={Logo.src} />
 
             <div className={Styles.social}>
               {/* <img src={LinkedIn.src} /> */}
               <span className={Styles.img}>
-              {/* <Image
+              <Image
                 alt="Picture"
                 width={26}
                 height={25}
                 src={LinkedIn.src}
-              /> */}
+              />
               </span>
               <span className={Styles.img}>
                 {/* <img src={Twitter.src} /> */}
-                {/* <Image
+                <Image
                   alt="Picture"
                   style="margin:40px"
                   width={26}
                   height={25}
                   src={Twitter.src}
-                /> */}
+                />
               </span>
 
               <span>
                 {/* <img src={FaceBook.src} /> */}
-                {/* <Image alt="Picture" width={26} height={25} src={FaceBook.src} /> */}
+                <Image alt="Picture" width={26} height={25} src={FaceBook.src} />
               </span>
             </div>
             <p className={Styles.address}>
