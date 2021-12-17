@@ -6,6 +6,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Image from "next/image";
+import Loader from '../loader/loader'
 const SearchInput = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
@@ -22,6 +23,8 @@ const SearchInput = () => {
   const onSubmit = (values) => {
     console.log(JSON.stringify(values, null, 2));
   };
+
+  const [loading , setLoading] = useState(false)
 
   const [showJop, setShowJop] = useState(false);
   const [nameJop, setNameJop] = useState("");
@@ -89,7 +92,7 @@ const SearchInput = () => {
         setAllJobs(response.data.list);
         console.log(response.data.list);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   useEffect(() => {
@@ -100,7 +103,7 @@ const SearchInput = () => {
     } else {
       setNewJops([]);
     }
-  }, [getValuejop,allJobs]);
+  }, [getValuejop, allJobs]);
 
   const onChangeValueCountries = (e) => {
     if (getValueCountry.length > e.target.value.length) {
@@ -161,7 +164,7 @@ const SearchInput = () => {
       .then((response) => {
         setAllCountries(response.data.list);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   useEffect(() => {
@@ -172,7 +175,7 @@ const SearchInput = () => {
     } else {
       setNewCountries([]);
     }
-  }, [getValueCountry,allCountries]);
+  }, [getValueCountry, allCountries]);
   // const onChangeValueCountries = (e) => {
   //   setGetValueCountry(e.target.value);
   //   if (!e.target.value) setNewCountries([]);
@@ -180,6 +183,7 @@ const SearchInput = () => {
   const sendDaTa = async () => {
     try {
       if (countryID && jobID) {
+        setLoading(true)
         setNameCountry(getValueCountry);
         setNameJop(getValuejop);
         setGetRanges(null);
@@ -204,6 +208,9 @@ const SearchInput = () => {
       // document.getElementById("red").style.borderColor = "red";
       setShowRanges(false);
       console.log(e);
+    }finally{
+      setLoading(false)
+
     }
   };
 
@@ -315,7 +322,7 @@ const SearchInput = () => {
                       <Image alt="Picture" width={13} height={12} src={Search.src} />
                     </span>
                     Find Salary
-                    
+
                   </button>
                 </div>
               </div>
@@ -325,7 +332,7 @@ const SearchInput = () => {
       </div>
 
       {/* <Input /> */}
-
+       { loading ? <Loader /> : ''}
       <SalaryRange
         getRanges={getRanges}
         getValueCountry={getValueCountry}
