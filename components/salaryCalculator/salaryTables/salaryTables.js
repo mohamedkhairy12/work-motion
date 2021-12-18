@@ -1,10 +1,14 @@
 import React from "react";
 import Styles from "./assets/salaryTables.module.scss";
+import Loader from '../../loader/loader'
 const SalaryTables = (props) => {
   console.log(props, "proopp")
   return (
     <>
-    
+      {props.loading ? <div className={Styles.loader}> <Loader /> </div> : ''}
+
+
+      {props.tableOne &&
         <div className={Styles.tables}>
           <p>Gross salary amount in talents’ local currency</p>
           <div className={Styles.table1}>
@@ -52,7 +56,7 @@ const SalaryTables = (props) => {
             </table>
           </div>
         </div>
-       
+      }
     </>
   );
 

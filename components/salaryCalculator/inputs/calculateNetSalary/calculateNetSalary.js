@@ -4,11 +4,13 @@ import Warning from "./assets/complain.png";
 import Vector from "./assets/Vector.png";
 import Image from "next/image";
 import axios from "axios";
+import Loader from '../../../loader/loader'
 
 const CalculateNetSalary = (props) => {
-  
+  // const [loading, setLoading] = useState(false)
   const calculateDaTa = async () => {
     try {
+      props.setLoading(true)
      await axios.post('http://34.68.200.24/index.php/calculate_it', {
           "first_country": props.getValueCountryOne,
           "second_country": props.getValueCountryTwo,
@@ -23,6 +25,8 @@ const CalculateNetSalary = (props) => {
         })
     } catch (error) {
       props.setErrors(error.response.data)
+    }finally{
+      props.setLoading(false)
     }
   }
   return (
@@ -65,15 +69,15 @@ const CalculateNetSalary = (props) => {
                       {/* <img src={Vector.src} className={Styles.vector}/> */}
                       <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector} />
                     </span>
-                    {/* <span className={Styles.tooltiptext}>
+                    <span className={Styles.tooltiptext}>
                       Persona:
                       <br />
                       Single, no children, 35 years old, Non-religious, public
                       insurance, healthcare/ etc., works in tech, works at home,
                       lives in the capital, resident, no special tax reliefs
                       other than tech related, mid-level (non manegerial/board),
-                      indefinite contract.ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                    </span> */}
+                      indefinite contract.
+                    </span>
                   </div>
                 </p>
               </div>

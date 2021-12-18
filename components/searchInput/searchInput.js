@@ -6,7 +6,6 @@ import axios from "axios";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Image from "next/image";
-import Loader from '../loader/loader'
 const SearchInput = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
@@ -23,8 +22,6 @@ const SearchInput = () => {
   const onSubmit = (values) => {
     console.log(JSON.stringify(values, null, 2));
   };
-
-  const [loading , setLoading] = useState(false)
 
   const [showJop, setShowJop] = useState(false);
   const [nameJop, setNameJop] = useState("");
@@ -75,7 +72,6 @@ const SearchInput = () => {
   }
   const getJopsData = (e) => {
     setNewJops([]);
-    console.log("GEHAD IS ::: ", e.target.firstChild.data);
     setGetValuejop(e.target.firstChild.data);
     setShowJop(false);
   };
@@ -92,13 +88,15 @@ const SearchInput = () => {
         setAllJobs(response.data.list);
         console.log(response.data.list);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
     if (getValuejop) {
       setNewJops(
-        allJobs?.filter((person) => person.positionName.toLowerCase().includes(getValuejop.toLowerCase()))
+        allJobs?.filter((person) =>
+          person.positionName.toLowerCase().includes(getValuejop.toLowerCase())
+        )
       );
     } else {
       setNewJops([]);
@@ -106,7 +104,7 @@ const SearchInput = () => {
   }, [getValuejop, allJobs]);
 
   const onChangeValueCountries = (e) => {
-    if (getValueCountry.length > e.target.value.length) {
+    if (getValueCountry.length > e.target.value.length || getValueCountry.length < e.target.value.length) {
       setCountryID(null);
     }
     setGetValueCountry(e.target.value);
@@ -114,7 +112,7 @@ const SearchInput = () => {
   };
 
   const onChangeValueJob = (e) => {
-    if (getValuejop.length > e.target.value.length) {
+    if (getValuejop.length > e.target.value.length || getValuejop.length < e.target.value.length ) {
       setJobID(null);
     }
     setGetValuejop(e.target.value);
@@ -164,13 +162,15 @@ const SearchInput = () => {
       .then((response) => {
         setAllCountries(response.data.list);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
     if (getValueCountry) {
       setNewCountries(
-        allCountries?.filter((person) => person.name.toLowerCase().includes(getValueCountry.toLowerCase()))
+        allCountries?.filter((person) =>
+          person.name.toLowerCase().includes(getValueCountry.toLowerCase())
+        )
       );
     } else {
       setNewCountries([]);
@@ -183,7 +183,6 @@ const SearchInput = () => {
   const sendDaTa = async () => {
     try {
       if (countryID && jobID) {
-        setLoading(true)
         setNameCountry(getValueCountry);
         setNameJop(getValuejop);
         setGetRanges(null);
@@ -208,9 +207,6 @@ const SearchInput = () => {
       // document.getElementById("red").style.borderColor = "red";
       setShowRanges(false);
       console.log(e);
-    }finally{
-      setLoading(false)
-
     }
   };
 
@@ -225,7 +221,22 @@ const SearchInput = () => {
         <div className={Styles.card}>
           <Formik
             initialValues={initialValues}
-            validationSchema={validationSchema}
+            // validationSchema={validationSchema}
+            validateOnChange
+            validate={(values) => {
+              const errors = {};
+              if (!values.name || (!jobID && jobID == null )) {
+                errors.name = "Please Select Position";
+              } else {
+                errors.name = "";
+              }
+              if (!values.counries || (!countryID && countryID ==null)) {
+                errors.counries = "Please Select Country";
+              } else {
+                errors.counries = "";
+              }
+              return errors;
+            }}
             onSubmit={async (values, { resetForm }) => {
               await onSubmit(values);
               resetForm();
@@ -247,7 +258,7 @@ const SearchInput = () => {
                     <ErrorMessage
                       name="name"
                       render={(msg) => (
-                        <div style={{ color: "#808080", marginTop: "10px" }}>
+                        <div style={{ color: "red", marginTop: "10px" }}>
                           {msg}
                         </div>
                       )}
@@ -280,13 +291,13 @@ const SearchInput = () => {
                       id="red"
                       type="text"
                       value={getValueCountry}
-                      placeholder={"Search by city, or country"}
+                      placeholder={"Search country"}
                       onInput={onChangeValueCountries}
                     />
                     <ErrorMessage
                       name="counries"
                       render={(msg) => (
-                        <div style={{ color: "#808080", marginTop: "10px" }}>
+                        <div style={{ color: "red", marginTop: "10px" }}>
                           {msg}
                         </div>
                       )}
@@ -319,10 +330,14 @@ const SearchInput = () => {
                   <button type="submit" className="button is-primary">
                     <span style={{ marginRight: "12px" }}>
                       {/* <img src={Search.src} /> */}
-                      <Image alt="Picture" width={13} height={12} src={Search.src} />
+                      <Image
+                        alt="Picture"
+                        width={13}
+                        height={12}
+                        src={Search.src}
+                      />
                     </span>
                     Find Salary
-
                   </button>
                 </div>
               </div>
@@ -332,7 +347,7 @@ const SearchInput = () => {
       </div>
 
       {/* <Input /> */}
-       { loading ? <Loader /> : ''}
+
       <SalaryRange
         getRanges={getRanges}
         getValueCountry={getValueCountry}

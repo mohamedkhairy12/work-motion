@@ -41,11 +41,12 @@ const GrossInput = ({setchecked,setCurrency,setCatchSelectVal,setGrossSalary,cur
             type="number"
             onInput={setGrossSal}
             placeholder="ex:8000"
+            min="0"
           />
           <ErrorMessage
             name="grossSalary"
             render={(msg) => (
-              <div style={{ color: "#808080", marginTop: "10px" }}>{msg}</div>
+              <div style={{ color: "red", marginTop: "10px" }}>{msg}</div>
             )}
           />
         </div>

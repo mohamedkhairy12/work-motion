@@ -9,8 +9,8 @@ const layout = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>about us</title>
-        <link rel="icon" href="favicon.ico"></link>
+        <title>WorkMotion</title>
+        <link rel="icon" href="favicon.svg"></link>
       </Head>
       <Header />
       <main>

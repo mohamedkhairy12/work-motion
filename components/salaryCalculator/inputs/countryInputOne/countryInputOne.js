@@ -212,6 +212,8 @@ const CountryInputOne = (props) => {
                 setErrors={setErrors}
               />
               <CalculateNetSalary
+               loading={props.loading}
+               setLoading={props.setLoading}
                 getValueCountryOne={getValueCountryOne}
                 getValueCountryTwo={getValueCountryTwo}
                 setCatchSelectVal={setCatchSelectVal}
