@@ -30,7 +30,7 @@ const Card = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
                   bibendum fermentum amet faucibus mauris arcu sed justo id.
                 </p>
-                <Link href="/SalariesCalculator" passHref>
+                <Link href="/netSalary-calculator" passHref>
                   <div className={Styles.btn}>
                     <button className={Styles.calc}>Calculate</button>
                   </div>
