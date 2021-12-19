@@ -163,7 +163,7 @@ const CountryInputOne = (props) => {
                     placeholder="Select Country 1"
                     onInput={onChangeValueCountryOne}
                   />
-                  <p>{errors.first_country}</p>
+                {getValueCountryOne == '' ? <p style={{color:"red"}} >{errors.first_country}</p> : '' }  
                   <div ref={wrapperRef}>
                     {getValueCountryOne && showMenuCountryOne ? (
                       <ul

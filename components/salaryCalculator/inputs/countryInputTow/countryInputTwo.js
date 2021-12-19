@@ -68,7 +68,7 @@ const CountryInputTwo = ({getValueCountryTwo,allCountryTwo,newCountryTwo,setNewC
         onInput={onChangeValueCountryTwo}
         placeholder="Select Country 2"
       />
-      <p>{errors.second_country}</p>
+      {getValueCountryTwo == '' ? <p style={{color:"red"}} >{errors.second_country}</p> : '' } 
       {/* <ErrorMessage
         name="countryTwo"
         render={(msg) => (

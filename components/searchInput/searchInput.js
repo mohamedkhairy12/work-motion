@@ -6,6 +6,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Image from "next/image";
+import Loader from '../loader/loader'
 const SearchInput = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
@@ -22,6 +23,7 @@ const SearchInput = () => {
   const onSubmit = (values) => {
     console.log(JSON.stringify(values, null, 2));
   };
+  const [loading, setLoading] = useState(false)
 
   const [showJop, setShowJop] = useState(false);
   const [nameJop, setNameJop] = useState("");
@@ -88,7 +90,7 @@ const SearchInput = () => {
         setAllJobs(response.data.list);
         console.log(response.data.list);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   useEffect(() => {
@@ -112,7 +114,7 @@ const SearchInput = () => {
   };
 
   const onChangeValueJob = (e) => {
-    if (getValuejop.length > e.target.value.length || getValuejop.length < e.target.value.length ) {
+    if (getValuejop.length > e.target.value.length || getValuejop.length < e.target.value.length) {
       setJobID(null);
     }
     setGetValuejop(e.target.value);
@@ -162,7 +164,7 @@ const SearchInput = () => {
       .then((response) => {
         setAllCountries(response.data.list);
       })
-      .catch((error) => {});
+      .catch((error) => { });
   }, []);
 
   useEffect(() => {
@@ -187,6 +189,7 @@ const SearchInput = () => {
         setNameJop(getValuejop);
         setGetRanges(null);
         setShowRanges(true);
+        setLoading(true)
         await axios
           .get(
             `http://34.68.200.24/index.php/country/${countryID}/position/${jobID}/advanced`
@@ -207,6 +210,9 @@ const SearchInput = () => {
       // document.getElementById("red").style.borderColor = "red";
       setShowRanges(false);
       console.log(e);
+    } finally {
+      setLoading(false)
+
     }
   };
 
@@ -225,12 +231,12 @@ const SearchInput = () => {
             validateOnChange
             validate={(values) => {
               const errors = {};
-              if (!values.name || (!jobID && jobID == null )) {
+              if (!values.name || (!jobID && jobID == null)) {
                 errors.name = "Please Select Position";
               } else {
                 errors.name = "";
               }
-              if (!values.counries || (!countryID && countryID ==null)) {
+              if (!values.counries || (!countryID && countryID == null)) {
                 errors.counries = "Please Select Country";
               } else {
                 errors.counries = "";
@@ -345,9 +351,10 @@ const SearchInput = () => {
           </Formik>
         </div>
       </div>
+     
 
       {/* <Input /> */}
-
+      {loading && nameJop && nameCountry ? <div style={{ width: "25%", height: "50%", margin: "auto" }}> <Loader />  </div> : ''}
       <SalaryRange
         getRanges={getRanges}
         getValueCountry={getValueCountry}

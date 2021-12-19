@@ -3,10 +3,11 @@ import Styles from "./assets/grossInput.module.scss";
 import { Field, ErrorMessage } from "formik";
 import Switch from "react-switch";
 import axios from "axios";
-const GrossInput = ({setchecked,setCurrency,setCatchSelectVal,setGrossSalary,currency,errors,checked}) => {
+const GrossInput = ({setchecked,setCurrency,setCatchSelectVal,setGrossSalary,currency,errors,checked,catchSelectVal}) => {
   const handleChange = (checked) => {
     setchecked(checked);
   }
+  // const errorCurr =()
 
   useEffect(() => {
     axios.get('http://34.68.200.24/index.php/main_currency')
@@ -61,7 +62,8 @@ const GrossInput = ({setchecked,setCurrency,setCatchSelectVal,setGrossSalary,cur
             )}
           </select>
         </div>
-        <p>{errors.currency}</p>
+           {catchSelectVal == '' ? <p style={{color:"red"}} >{errors.currency}</p> : '' } 
+
       </div>
       <div className="col-8 col-md-8">
         <p className={Styles.radioHeader}>

@@ -5,10 +5,11 @@ const SalaryTables = (props) => {
   console.log(props, "proopp")
   return (
     <>
-      {props.loading ? <div className={Styles.loader}> <Loader /> </div> : ''}
+      {props.loading ? 
+      <div style={{ width: "50%", height: "50%", margin: "auto", marginTop:"10%" }}> <Loader /> </div> : ''}
 
 
-      {props.tableOne &&
+      {props.tableOne && !props.loading &&
         <div className={Styles.tables}>
           <p>Gross salary amount in talents’ local currency</p>
           <div className={Styles.table1}>
@@ -61,4 +62,4 @@ const SalaryTables = (props) => {
   );
 
 };
-export default SalaryTables;
+export default SalaryTables
