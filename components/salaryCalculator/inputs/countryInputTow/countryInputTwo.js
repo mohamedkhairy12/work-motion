@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Styles from "./assets/countryInputTwo.module.scss";
 import { Field, ErrorMessage } from "formik";
-const CountryInputTwo = ({getValueCountryTwo,allCountryTwo,newCountryTwo,setNewCountryTwo,errors,showMenuCountryTwo,setShowMenuCountryTwo,setGetValueCountryTwo}) => {
-
+const CountryInputTwo = ({getValueCountryTwo,getValueCountryOne,allCountryTwo,newCountryTwo,setNewCountryTwo,errors,showMenuCountryTwo,setShowMenuCountryTwo,setGetValueCountryTwo}) => {
+const [matchCountries, setMatchCountries] = useState(false)
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -35,6 +35,8 @@ const CountryInputTwo = ({getValueCountryTwo,allCountryTwo,newCountryTwo,setNewC
   };
 
   useEffect(() => {
+    let match = allCountryTwo.map((i)=>i.name)
+    setMatchCountries(match.includes(getValueCountryTwo))
     if (getValueCountryTwo) {
       setNewCountryTwo(
       allCountryTwo?.filter((person) =>
@@ -68,7 +70,10 @@ const CountryInputTwo = ({getValueCountryTwo,allCountryTwo,newCountryTwo,setNewC
         onInput={onChangeValueCountryTwo}
         placeholder="Select Country 2"
       />
-      <p>{errors.second_country}</p>
+      
+      <p>{ getValueCountryTwo==getValueCountryOne  || !getValueCountryTwo  || !matchCountries ? errors.second_country:''}</p>
+     
+     
       {/* <ErrorMessage
         name="countryTwo"
         render={(msg) => (

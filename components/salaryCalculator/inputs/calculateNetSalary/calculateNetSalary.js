@@ -24,6 +24,13 @@ const CalculateNetSalary = (props) => {
     } catch (error) {
       props.setErrors(error.response.data)
     }
+    if(props.getValueCountryOne && props.getValueCountryTwo&& props.checked  ){
+    props.setGetValueCountryOne("")
+    props.setGetValueCountryTwo("")
+    
+    props.setchecked(false)
+  }
+   
   }
   return (
     <>
@@ -63,7 +70,8 @@ const CalculateNetSalary = (props) => {
                   <div className={Styles.tooltip}>
                     <span className={Styles.vector}>
                       {/* <img src={Vector.src} className={Styles.vector}/> */}
-                      <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector} />
+                      {/* <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector} /> */}
+                      <Image alt="Picture" width={'10%'} height={'10%'} src={Vector.src} className={Styles.vector} />
                     </span>
                     {/* <span className={Styles.tooltiptext}>
                       Persona:
@@ -79,7 +87,9 @@ const CalculateNetSalary = (props) => {
               </div>
               <div className={Styles.warningIcon}>
                 {/* <img src={Warning.src} /> */}
-                <Image alt="Picture" width={50} height={48} src={Warning.src} />
+                {/* <Image alt="Picture" width={50} height={48} src={Warning.src} /> */}
+                <Image alt="Picture" width={'70%'} height={'70%'} src={Warning.src} />
+
               </div>
             </div>
           </div>

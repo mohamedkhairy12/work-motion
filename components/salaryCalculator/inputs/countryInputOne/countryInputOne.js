@@ -33,6 +33,8 @@ const CountryInputOne = (props) => {
   const [allCountryOne, setAllCountryOne] = useState([]);
   const [allCountryTwo, setAllCountryTwo] = useState([]);
   const [newCountryOne, setNewCountryOne] = useState("");
+ 
+  const [matchCountries, setMatchCountries] = useState(false)
 
   const handleOpencountryOne = () => {
     setShowMenuCountryOne(true);
@@ -85,6 +87,8 @@ const CountryInputOne = (props) => {
   }, []);
 
   useEffect(() => {
+    let match = allCountryOne.map((i)=>i.name)
+    setMatchCountries(match.includes(getValueCountryOne))
     if (getValueCountryOne) {
       setNewCountryOne(
         allCountryOne?.filter((person) =>
@@ -129,8 +133,8 @@ const CountryInputOne = (props) => {
 
   ////////////////START CURRENCY TYPE////////////////////
   const [currency, setCurrency] = useState([])
-  const [catchSelectVal, setCatchSelectVal] = useState('')
-  const [grossSalary, setGrossSalary] = useState('')
+  const [catchSelectVal, setCatchSelectVal] = useState("")
+  const [grossSalary, setGrossSalary] = useState("")
   const [checked, setchecked] = useState(false);
   // const[tableOne, setTableOne] = useState("")
   const [errors, setErrors] = useState('')
@@ -163,7 +167,7 @@ const CountryInputOne = (props) => {
                     placeholder="Select Country 1"
                     onInput={onChangeValueCountryOne}
                   />
-                  <p>{errors.first_country}</p>
+                  <p >{!getValueCountryOne || !matchCountries ? errors.first_country:''}</p>
                   <div ref={wrapperRef}>
                     {getValueCountryOne && showMenuCountryOne ? (
                       <ul
@@ -194,6 +198,7 @@ const CountryInputOne = (props) => {
                   newCountryTwo={newCountryTwo}
                   getValueCountryTwo={getValueCountryTwo}
                   showMenuCountryTwo={showMenuCountryTwo}
+                  getValueCountryOne={getValueCountryOne}
                   setShowMenuCountryTwo={setShowMenuCountryTwo}
                   errors={errors}
                   setErrors={setErrors}
@@ -214,6 +219,8 @@ const CountryInputOne = (props) => {
               <CalculateNetSalary
                 getValueCountryOne={getValueCountryOne}
                 getValueCountryTwo={getValueCountryTwo}
+                setGetValueCountryOne={setGetValueCountryOne}
+                setGetValueCountryTwo={setGetValueCountryTwo}
                 setCatchSelectVal={setCatchSelectVal}
                 catchSelectVal={catchSelectVal}
                 setGrossSalary={setGrossSalary}
