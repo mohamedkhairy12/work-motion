@@ -5,6 +5,7 @@ import CountryInputOne from "./inputs/countryInputOne/countryInputOne";
 
 const SalaryCalculator = () => {
   const [tableOne, setTableOne] = useState()
+  const [loading, setLoading] = useState(false)
   return (
     <div className={Styles.main}>
       <div className="container">
@@ -22,17 +23,21 @@ const SalaryCalculator = () => {
             <CountryInputOne
               setTableOne={setTableOne}
               tableOne={tableOne}
+              loading={loading}
+              setLoading={setLoading}
             />
 
           </div>
 
           <div className="col-12 col-sm-6">
-            {tableOne &&
+            {/* {tableOne && */}
               <SalaryTables
+                loading={loading}
+                setLoading={setLoading}
                 setTableOne={setTableOne}
                 tableOne={tableOne}
               />
-            }
+            {/* } */}
           </div>
         </div>
       </div>

@@ -7,8 +7,8 @@ import Image from "next/image";
 const Header = () => {
   return (
     <div className={Styles.container}>
-      <div className={Styles.img}>
-        <Image alt="Picture" width={1600} height={350} src={HeaderPhoto.src} />
+      <div className={Styles.img} style={{ position: "relative", width: "100%", paddingBottom: "25%" ,bottom:"10px"}} >
+  <Image  layout="fill" objectFit="contain"  alt="Picture" src={HeaderPhoto.src} />
       </div>
       {/* <img className={Styles.img} src={HeaderPhoto.src}/> */}
       <div className={Styles.imgRes}>

@@ -60,7 +60,7 @@ const GrossInput = ({
           <ErrorMessage
             name="grossSalary"
             render={(msg) => (
-              <div style={{ color: "#808080", marginTop: "10px" }}>{msg}</div>
+              <div style={{ color: "red", marginTop: "10px" }}>{msg}</div>
             )}
           />
         </div>
