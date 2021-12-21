@@ -10,7 +10,7 @@ const layout = ({ children }) => {
     <div>
       <Head>
         <title>WorkMotion</title>
-        <link rel="icon" href="favicon.svg"></link>
+        <link rel="icon" href="favicon.png"></link>
       </Head>
       <Header />
       <main>

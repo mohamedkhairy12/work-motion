@@ -62,7 +62,7 @@ const GrossInput = ({setchecked,setCurrency,setCatchSelectVal,setGrossSalary,cur
             )}
           </select>
         </div>
-           {catchSelectVal == '' ? <p style={{color:"red"}} >{errors.currency}</p> : '' } 
+            <p style={{color:"red"}} >{!catchSelectVal  ? errors.currency : ""}  </p>
 
       </div>
       <div className="col-8 col-md-8">
