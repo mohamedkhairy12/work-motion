@@ -275,12 +275,12 @@ const SearchInput = () => {
             validateOnChange
             validate={(values) => {
               const errors = {};
-              if (!values.name || (!jobID && jobID == null)) {
+              if (!values.name || (!jobID && jobID == null)&&!getValuejop) {
                 errors.name = "Please Select Position";
               } else {
                 errors.name = "";
               }
-              if (!values.counries || (!countryID && countryID == null)) {
+              if (!values.counries || (!countryID && countryID == null)&&!getValueCountry) {
                 errors.counries = "Please Select Country";
               } else {
                 errors.counries = "";
