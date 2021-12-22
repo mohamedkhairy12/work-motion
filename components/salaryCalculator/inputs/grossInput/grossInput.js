@@ -86,7 +86,8 @@ const GrossInput = ({
             ))}
           </select>
         </div>
-        <p>{!catchSelectVal  ? errors.currency : ""}</p>
+            <p style={{color:"red"}} >{!catchSelectVal  ? errors.currency : ""}  </p>
+
       </div>
       <div className="col-8 col-md-8">
         <p className={Styles.radioHeader}>

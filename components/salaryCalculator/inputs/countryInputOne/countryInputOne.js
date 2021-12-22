@@ -125,7 +125,7 @@ const CountryInputOne = (props) => {
   const [showMenuCountryTwo, setShowMenuCountryTwo] = useState(false);
   const [getValueCountryTwo, setGetValueCountryTwo] = useState("");
   const [newCountryTwo, setNewCountryTwo] = useState("");
-
+  const [matchCountries, setMatchCountries] = useState(false)
   const handleOpencountryTwo = () => {
     setShowMenuCountryTwo(true);
   };
@@ -167,7 +167,7 @@ const CountryInputOne = (props) => {
                     placeholder="Select Country 1"
                     onInput={onChangeValueCountryOne}
                   />
-                  <p >{!getValueCountryOne || !matchCountries ? errors.first_country:''}</p>
+                  <p style={{color:"red"}}>{!getValueCountryOne || !matchCountries ? errors.first_country:''}</p>
                   <div ref={wrapperRef}>
                     {getValueCountryOne && showMenuCountryOne ? (
                       <ul
@@ -202,6 +202,7 @@ const CountryInputOne = (props) => {
                   setShowMenuCountryTwo={setShowMenuCountryTwo}
                   errors={errors}
                   setErrors={setErrors}
+                  getValueCountryOne={getValueCountryOne}
                 />
               </div>
 
