@@ -125,7 +125,6 @@ const CountryInputOne = (props) => {
   const [showMenuCountryTwo, setShowMenuCountryTwo] = useState(false);
   const [getValueCountryTwo, setGetValueCountryTwo] = useState("");
   const [newCountryTwo, setNewCountryTwo] = useState("");
-  const [matchCountries, setMatchCountries] = useState(false)
   const handleOpencountryTwo = () => {
     setShowMenuCountryTwo(true);
   };
