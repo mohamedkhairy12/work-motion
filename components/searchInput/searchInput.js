@@ -6,7 +6,9 @@ import axios from "axios";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Image from "next/image";
-import Loader from '../loader/loader'
+import Loader from "../loader/loader";
+import HeaderPhoto from "./assets/image/header.png";
+import HeaderRes from "./assets/image/headerRes.png";
 const SearchInput = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("please select position"),
@@ -23,7 +25,7 @@ const SearchInput = () => {
   const onSubmit = (values) => {
     console.log(JSON.stringify(values, null, 2));
   };
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const [showJop, setShowJop] = useState(false);
   const [nameJop, setNameJop] = useState("");
@@ -90,7 +92,7 @@ const SearchInput = () => {
         setAllJobs(response.data.list);
         console.log(response.data.list);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
@@ -106,7 +108,10 @@ const SearchInput = () => {
   }, [getValuejop, allJobs]);
 
   const onChangeValueCountries = (e) => {
-    if (getValueCountry.length > e.target.value.length || getValueCountry.length < e.target.value.length) {
+    if (
+      getValueCountry.length > e.target.value.length ||
+      getValueCountry.length < e.target.value.length
+    ) {
       setCountryID(null);
     }
     setGetValueCountry(e.target.value);
@@ -114,7 +119,10 @@ const SearchInput = () => {
   };
 
   const onChangeValueJob = (e) => {
-    if (getValuejop.length > e.target.value.length || getValuejop.length < e.target.value.length) {
+    if (
+      getValuejop.length > e.target.value.length ||
+      getValuejop.length < e.target.value.length
+    ) {
       setJobID(null);
     }
     setGetValuejop(e.target.value);
@@ -164,7 +172,7 @@ const SearchInput = () => {
       .then((response) => {
         setAllCountries(response.data.list);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   }, []);
 
   useEffect(() => {
@@ -189,7 +197,7 @@ const SearchInput = () => {
         setNameJop(getValuejop);
         setGetRanges(null);
         setShowRanges(true);
-        setLoading(true)
+        setLoading(true);
         await axios
           .get(
             `http://34.68.200.24/index.php/country/${countryID}/position/${jobID}/advanced`
@@ -211,8 +219,7 @@ const SearchInput = () => {
       setShowRanges(false);
       console.log(e);
     } finally {
-      setLoading(false)
-
+      setLoading(false);
     }
   };
 
@@ -223,6 +230,43 @@ const SearchInput = () => {
 
   return (
     <>
+      <div className={Styles.header}>
+        <div
+          className={Styles.imgHeader}
+          style={{
+            position: "relative",
+            width: "100%",
+            paddingBottom: "26%",
+            bottom: "48px",
+          }}
+        >
+          <Image
+          
+            layout="fill"
+            objectFit="contain"
+            alt="Picture"
+            src={HeaderPhoto.src}
+          />
+        </div>
+
+        <div
+          className={Styles.imgResHeader}
+          style={{
+            position: "relative",
+            width: "100%",
+
+            bottom: "48px",
+          }}
+        >
+          <Image
+            alt="Picture"
+            width={450}
+            height={230}
+            src={HeaderRes.src}
+          />
+        </div>
+      </div>
+      <div className="container">
       <div className={Styles.cont}>
         <div className={Styles.card}>
           <Formik
@@ -351,10 +395,17 @@ const SearchInput = () => {
           </Formik>
         </div>
       </div>
-     
+      </div>
 
       {/* <Input /> */}
-      {loading && nameJop && nameCountry ? <div style={{ width: "25%", height: "50%", margin: "auto" }}> <Loader />  </div> : ''}
+      {loading && nameJop && nameCountry ? (
+        <div style={{ width: "25%", height: "50%", margin: "auto" }}>
+          {" "}
+          <Loader />{" "}
+        </div>
+      ) : (
+        ""
+      )}
       <SalaryRange
         getRanges={getRanges}
         getValueCountry={getValueCountry}

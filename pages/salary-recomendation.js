@@ -4,11 +4,11 @@ import SalaryRange from "../components/salaryRange/salaryRange";
 export default function Home() {
   return (
     <>
-      <div className="container">
+      
       <SearchInput />
       <SalaryRange />
       <Card />
-      </div>
+      
     </>
   );
 }
