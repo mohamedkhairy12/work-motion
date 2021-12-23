@@ -201,7 +201,6 @@ const CountryInputOne = (props) => {
                   setShowMenuCountryTwo={setShowMenuCountryTwo}
                   errors={errors}
                   setErrors={setErrors}
-                  getValueCountryOne={getValueCountryOne}
                 />
               </div>
 

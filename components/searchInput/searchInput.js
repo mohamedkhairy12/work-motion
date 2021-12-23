@@ -236,7 +236,7 @@ const SearchInput = () => {
           style={{
             position: "relative",
             width: "100%",
-            paddingBottom: "26%",
+            paddingBottom: "25%",
             bottom: "48px",
           }}
         >
