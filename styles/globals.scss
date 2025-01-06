@@ -1,6 +1,5 @@
-
 @import "~bootstrap-4-grid/css/grid.min.css";
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200;0,400;0,500;1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,200;0,400;0,500;1,500&display=swap");
 /* ------------ English Fonts ------------ */
 // @font-face {
 //   font-family: 'Archivo';
@@ -11,8 +10,9 @@
 /* ---------------------- general ---------------------- */
 body {
   margin: 0;
-  // background-color: $template-background;
-  background-color: #E5E5E5; 
+  // background-color: #e9f4f3;
+   background: #E9F4F3;
+  
   font-size: 14px;
   * {
     box-sizing: border-box;
@@ -24,6 +24,24 @@ main {
   margin: 40px 0;
   
 }
+
+
+  .react-switch-bg {
+    height: 17px !important;
+    width: 44px !important;
+    &:after {
+      background: #00826e;
+    }
+  }
+  .react-switch-handle {
+    height: 13px !important;
+    width: 13px !important;
+    margin: 1px !important;
+    &:after {
+      transform: translateX(13px);
+    }
+  }
+
 
 
 

@@ -1,22 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./assets/calculateNetSalary.module.scss";
-import warnning from "./image/complain.png";
-import icon from "./image/Vector ico.png";
+import Warning from "./assets/complain.png";
+import Vector from "./assets/Vector.png";
+import Image from "next/image";
+import axios from "axios";
+import Loader from '../../../loader/loader'
 
-const calculateNetSalary = () => {
+const CalculateNetSalary = (props) => {
+  // const [loading, setLoading] = useState(false)
+  const calculateDaTa = async () => {
+    try {
+      props.setLoading(true)
+     await axios.post('http://34.68.200.24/index.php/calculate_it', {
+          "first_country": props.getValueCountryOne,
+          "second_country": props.getValueCountryTwo,
+          "currency": props.catchSelectVal,
+          "value": props.grossSalary,
+          "allow": props.checked
+        
+      })
+        .then((response) => {
+          props.setTableOne(response.data)  
+          console.log(response.data, "poosstt")
+        })
+    } catch (error) {
+      props.setErrors(error.response.data)
+    }finally{
+      props.setLoading(false)
+    }
+    if(props.getValueCountryOne && props.getValueCountryTwo&& props.checked  ){
+    props.setGetValueCountryOne("")
+    props.setGetValueCountryTwo("")
+    
+    props.setchecked(false)
+  }
+   
+  }
   return (
     <>
-      <div className="col-12 col-md-12">
-        <div className={Styles.btn}>
-          <button type="submit" className="button is-primary">
-            calculate Net Salary
-          </button>
-        </div>
-      </div>
-      <div className="col-12 col-md-12">
-        <div className={Styles.card}>
+      <div className="container">
+        <div className="row">
           <div className="col-12 col-md-12">
-            <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <div className={Styles.btn}>
+              <button type="submit" className="button is-primary" onClick={calculateDaTa}>
+                calculate Net Salary
+              </button>
+            </div>
+          </div>
+          
+          <div className="col-12 col-sm-12">
+            <div className={Styles.card}>
               <div>
                 <p
                   style={{
@@ -31,7 +64,6 @@ const calculateNetSalary = () => {
                 </p>
                 <p
                   style={{
-                    fontFamily: "Work Sans",
                     fontSize: "12px",
                     lineHeight: "22px",
                     color: "#5A6487",
@@ -39,13 +71,29 @@ const calculateNetSalary = () => {
                 >
                   The calculation is estimated according to a persona and not
                   every employee will fit this persona.
-                  <span style={{ margin: "0 0 0 5px"}}>
-                    <img src={icon.src} />
-                  </span>
+                  <div className={Styles.tooltip}>
+                    <span className={Styles.vector}>
+                      {/* <img src={Vector.src} className={Styles.vector}/> */}
+                      {/* <Image alt="Picture" width={20} height={20} src={Vector.src} className={Styles.vector} /> */}
+                      <Image alt="Picture" width={'10%'} height={'10%'} src={Vector.src} className={Styles.vector} />
+                    </span>
+                    <span className={Styles.tooltiptext}>
+                      Persona:
+                      <br />
+                      Single, no children, 35 years old, Non-religious, public
+                      insurance, healthcare/ etc., works in tech, works at home,
+                      lives in the capital, resident, no special tax reliefs
+                      other than tech related, mid-level (non manegerial/board),
+                      indefinite contract.
+                    </span>
+                  </div>
                 </p>
               </div>
-              <div className={Styles.warnning} style={{ marginTop: "16px" }}>
-                <img src={warnning.src} />
+              <div className={Styles.warningIcon}>
+                {/* <img src={Warning.src} /> */}
+                {/* <Image alt="Picture" width={50} height={48} src={Warning.src} /> */}
+                <Image alt="Picture" width={'70%'} height={'70%'} src={Warning.src} />
+
               </div>
             </div>
           </div>
@@ -55,4 +103,4 @@ const calculateNetSalary = () => {
   );
 };
 
-export default calculateNetSalary;
+export default CalculateNetSalary;

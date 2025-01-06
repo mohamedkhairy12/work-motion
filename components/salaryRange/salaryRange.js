@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Styles from "./assets/salaryRange.module.scss";
 
-const salaryRange = (props) => {
+const SalaryRange = (props) => {
   const [radio, setRadio] = useState("Annual");
   if (!props.getRanges) return <div/>;
   return (
     <>
-      {props.getRanges && props.nameCountry && props.nameJop ? (
+      {props.getRanges && props.nameCountry && props.nameJop  ? (
         <div className="container">
           <div className={Styles.ranges}>
             <p className={Styles.title}>
@@ -80,33 +80,31 @@ const salaryRange = (props) => {
                     <div className={Styles.min}>
                       <p>10 % </p>
                       <p>
-                        {props?.getRanges?.currency}{" "}
-                        {radio === "Annual"
+                        {props?.getRanges?.currency}  {radio === "Monthly"
                           ? props?.getRanges?.quantiles?.q10
-                          : Math.ceil(props?.getRanges?.quantiles?.q10 / 12)}
-                        K
+                          : Math.ceil(props?.getRanges?.quantiles?.q10 * 12)}
+
+                        
+                        
                       </p>
                     </div>
                     <div>
                       <p>MEDIAN</p>
                       <p>
-                        {props?.getRanges?.currency}{" "}
-                        {radio === "Annual"
+                        {props?.getRanges?.currency}  {radio === "Monthly"
                           ? props?.getRanges?.quantiles?.average
                           : Math.ceil(
-                              props?.getRanges?.quantiles?.average / 12
+                              props?.getRanges?.quantiles?.average * 12
                             )}
-                        K
+                        
                       </p>
                     </div>
                     <div className={Styles.max}>
                       <p>90 %</p>
                       <p>
-                        {props.getRanges.currency}{" "}
-                        {radio === "Annual"
+                        {props.getRanges.currency} {radio === "Monthly"
                           ? props?.getRanges?.quantiles?.q90
-                          : Math.ceil(props?.getRanges?.quantiles.q90 / 12)}
-                        K{" "}
+                          : Math.ceil(props?.getRanges?.quantiles.q90 * 12)}
                       </p>
                     </div>
                   </div>
@@ -114,12 +112,13 @@ const salaryRange = (props) => {
                 <div className={`col-12 col-sm-4 ${Styles.baseSalary}`}>
                   <p className={Styles.month}>{radio}</p>
                   <p className={Styles.net}>
-                    {radio === "Annual"
+                    {radio === "Monthly"
                       ? props.getRanges?.quantiles?.average
                       : Math.ceil(
-                          props.getRanges?.quantiles?.average / 12
-                        )}{" "}
-                    {props.getRanges?.currency}
+                          props.getRanges?.quantiles?.average * 12
+                        )} {props.getRanges?.currency}
+
+                    
                   </p>
                   <p className={Styles.avg}>Average base salary</p>
                 </div>
@@ -134,4 +133,4 @@ const salaryRange = (props) => {
   );
 };
 
-export default salaryRange;
+export default SalaryRange;

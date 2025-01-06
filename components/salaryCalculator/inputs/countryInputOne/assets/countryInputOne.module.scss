@@ -6,14 +6,14 @@
   }
   .card {
     .header {
-      font-family: "Work Sans";
       font-weight: 500;
       font-size: 14px;
       line-height: 16px;
       margin: 32px 0 12px 0;
       color: #064946;
       @media (max-width: 768px) {
-        display: none;      }
+        display: none;
+      }
     }
     .searchInput {
       input {
@@ -27,14 +27,37 @@
         padding-left: 17px;
       }
       @media (max-width: 768px) {
-        margin: 60px 0 16px 0;
+        margin: 70px 0 16px 0;
       }
       .label {
-        font-family: "Work Sans";
         font-size: 14px;
         line-height: 16px;
         color: #064946;
         margin: 0 0 12px 0;
+        @media (max-width: 768px) {
+          margin: 20px 0 12px 0;
+        }
+      }
+    }
+    .cardSearch {
+      position: absolute;
+      top: 49px;
+      width: 90%;
+      background-color: #fff;
+      left: 17px;
+      z-index: 1000;
+      padding-left: 0px;
+      height: 145px;
+      overflow-y: scroll;
+
+      .select {
+        padding: 10px;
+        list-style: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e9f4f3;
+        }
       }
     }
   }
